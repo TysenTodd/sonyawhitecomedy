@@ -6,17 +6,7 @@ hamburger?.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
-window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar");
 
-  if (window.scrollY > 20) {
-    navbar.style.background = "rgba(10, 15, 30, 0.95)";
-    navbar.style.boxShadow = "0 12px 40px rgba(0,0,0,0.5)";
-  } else {
-    navbar.style.background = "rgba(10, 15, 30, 0.85)";
-    navbar.style.boxShadow = "0 8px 30px rgba(0,0,0,0.3)";
-  }
-});
 
 
 // =========================
@@ -145,3 +135,436 @@ function openFooterModal(type) {
 function closeFooterModal() {
   document.getElementById("footer-modal").style.display = "none";
 }
+
+/* =========================
+   ABOUT PAGE MODALS
+========================= */
+
+const modalTriggers = document.querySelectorAll(".modal-trigger");
+const modals = document.querySelectorAll(".custom-modal");
+const closeButtons = document.querySelectorAll(".close-modal");
+
+modalTriggers.forEach(trigger => {
+  trigger.addEventListener("click", () => {
+
+    const modalId = trigger.getAttribute("data-modal");
+    const modal = document.getElementById(modalId);
+
+    if(modal){
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+  });
+});
+
+closeButtons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    button.closest(".custom-modal").classList.remove("active");
+    document.body.style.overflow = "auto";
+
+  });
+});
+
+window.addEventListener("click", (e) => {
+
+  modals.forEach(modal => {
+
+    if(e.target === modal){
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+  });
+
+});
+
+
+const modalIds = [
+  "bioModal",
+  "tourModal",
+  "galleryModal",
+  "showcaseModal",
+  "cinemaModal"
+];
+
+modalIds.forEach(id => {
+  const modal = document.getElementById(id);
+
+  if (!modal) return;
+
+  const closeBtn = modal.querySelector(".hero-modal-close");
+
+  closeBtn?.addEventListener("click", () => {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+});
+
+function setupBubbleFilters(container) {
+  const bubbles = container.querySelectorAll(".bubble");
+  const cards = container.querySelectorAll(".video-card");
+
+  bubbles.forEach(bubble => {
+    bubble.addEventListener("click", () => {
+
+      bubbles.forEach(b => b.classList.remove("active"));
+      bubble.classList.add("active");
+
+      const filter = bubble.dataset.filter;
+
+      cards.forEach(card => {
+
+        const category = card.dataset.category;
+
+        if (filter === "all" || category === filter) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    });
+  });
+}
+
+const showcaseModal = document.getElementById("showcaseModal");
+
+if (showcaseModal) {
+  setupBubbleFilters(showcaseModal);
+}
+
+/* =========================
+   SONYA SHOWCASE MINI FILTER + VIDEO
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const showcaseSection = document.querySelector(".sw-showcase-section");
+  if (!showcaseSection) return;
+
+  const showcaseBubbles = showcaseSection.querySelectorAll(".sw-bubble");
+  const showcaseCards = showcaseSection.querySelectorAll(".sw-video-card");
+
+  showcaseBubbles.forEach((bubble) => {
+    bubble.addEventListener("click", () => {
+      const filter = bubble.dataset.filter;
+
+      showcaseBubbles.forEach((btn) => btn.classList.remove("active"));
+      bubble.classList.add("active");
+
+      showcaseCards.forEach((card) => {
+        const category = card.dataset.category;
+
+        if (filter === "all" || category === filter) {
+          card.classList.remove("hide");
+        } else {
+          card.classList.add("hide");
+        }
+      });
+    });
+  });
+
+  const videoModal = document.getElementById("videoModal");
+  const modalVideo = document.getElementById("modalVideo");
+
+  showcaseCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (!videoModal || !modalVideo) return;
+
+      const videoURL = card.dataset.video;
+      modalVideo.src = videoURL;
+      videoModal.style.display = "flex";
+    });
+  });
+});
+
+/* =========================
+   TOUR MODAL FILTERS
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tourModal = document.querySelector(".tour-modal-mini");
+  if (!tourModal) return;
+
+  const filterButtons = tourModal.querySelectorAll(".tour-modal-filter");
+  const eventCards = tourModal.querySelectorAll(".tour-modal-event-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      eventCards.forEach((card) => {
+        const type = card.dataset.type;
+
+        if (filter === "all" || type === filter) {
+          card.classList.remove("hide");
+        } else {
+          card.classList.add("hide");
+        }
+      });
+    });
+  });
+});
+
+/* =========================
+   GALLERY MODAL FILTERS
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryModal = document.querySelector(".gallery-modal-upgraded");
+  if (!galleryModal) return;
+
+  const filters = galleryModal.querySelectorAll(".gallery-filter-card");
+  const rails = galleryModal.querySelectorAll(".gallery-rail");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const selected = filter.dataset.filter;
+
+      filters.forEach((btn) => btn.classList.remove("active"));
+      filter.classList.add("active");
+
+      rails.forEach((rail) => {
+        if (rail.dataset.category === selected) {
+          rail.style.display = "block";
+          rail.classList.add("active");
+        } else {
+          rail.style.display = "none";
+          rail.classList.remove("active");
+        }
+      });
+    });
+  });
+});
+
+/* =====================
+   SOCIAL FEED TABS
+===================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const socialTabs = document.querySelectorAll(".social-tab");
+  const socialPanels = document.querySelectorAll(".social-feed-panel");
+  const socialText = document.getElementById("socialFeedText");
+
+  const textMap = {
+    facebook: "See Sonya’s latest updates directly from Facebook.",
+    instagram: "View Sonya’s Instagram highlights and follow her latest comedy moments.",
+    tiktok: "Watch short-form clips, comedy moments, and featured TikTok content."
+  };
+
+  socialTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const selected = tab.dataset.social;
+
+      socialTabs.forEach((btn) => btn.classList.remove("active"));
+      tab.classList.add("active");
+
+      socialPanels.forEach((panel) => {
+        panel.classList.remove("active");
+      });
+
+      document.getElementById(`${selected}Panel`).classList.add("active");
+
+      if (socialText) {
+        socialText.textContent = textMap[selected];
+      }
+    });
+  });
+});
+
+const showcaseSection = document.querySelector(".videos-showcase-pro");
+const showcaseFilters = document.querySelectorAll(
+  ".videos-pro-filters .bubble"
+);
+
+let showcaseRotationStarted = false;
+let showcaseRotationInterval;
+
+function startShowcaseRotation() {
+  if (showcaseRotationStarted) return;
+
+  showcaseRotationStarted = true;
+
+  let currentIndex = 0;
+
+  function activateFilter(index) {
+    showcaseFilters[index].click();
+  }
+
+  activateFilter(0);
+
+  showcaseRotationInterval = setInterval(() => {
+    currentIndex++;
+
+    if (currentIndex >= showcaseFilters.length) {
+      currentIndex = 0;
+    }
+
+    activateFilter(currentIndex);
+
+  }, 7000);
+}
+
+const showcaseObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+        startShowcaseRotation();
+      }
+
+    });
+  },
+  {
+    threshold: 0.4
+  }
+);
+
+if (showcaseSection) {
+  showcaseObserver.observe(showcaseSection);
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const testimonialCards = document.querySelectorAll(".testimonial-card");
+
+  testimonialCards.forEach(card => {
+    card.classList.add("reveal-ready");
+  });
+
+  const testimonialObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-active");
+          testimonialObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  testimonialCards.forEach(card => testimonialObserver.observe(card));
+});
+
+//Script for modals to close when button (not X button) is clicked
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".close-and-scroll").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      const modal = this.closest(".custom-modal");
+
+      if (modal) {
+        modal.classList.remove("active");
+        modal.style.display = "none";
+      }
+
+      document.body.style.overflow = "auto";
+
+      const target = document.querySelector("#tour");
+
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+  });
+});
+
+document.querySelectorAll(".close-gallery-scroll").forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    const galleryModal = document.getElementById("galleryModal");
+
+    if (galleryModal) {
+      galleryModal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    document.querySelector("#gallery").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+});
+
+document.querySelectorAll(".close-showcase-scroll").forEach(btn => {
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    const modal = document.getElementById("showcaseModal");
+
+    if (modal) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    document.querySelector("#showcase").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("siteLockOverlay");
+  const form = document.getElementById("siteLockForm");
+  const input = document.getElementById("siteLockCode");
+  const error = document.getElementById("siteLockError");
+
+  const correctCode = "sonya2026";
+
+  if (localStorage.getItem("siteUnlocked") === "true") {
+    overlay.style.display = "none";
+    return;
+  }
+
+  document.body.style.overflow = "hidden";
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    if (input.value.trim() === correctCode) {
+      localStorage.setItem("siteUnlocked", "true");
+      overlay.style.display = "none";
+      document.body.style.overflow = "auto";
+    } else {
+      error.textContent = "Incorrect code. Please try again.";
+      input.value = "";
+      input.focus();
+    }
+  });
+});
