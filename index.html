@@ -1,780 +1,1291 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sonya White Comedy</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonya White Comedy</title>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
-  <!-- FontAwesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
-      integrity="sha512-...replace-with-correct-integrity..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-...replace-with-correct-integrity..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
 
+    <!--SITE LOCK-->
+    <div id="siteLockOverlay" class="site-lock-overlay">
+      <div class="site-lock-card">
+        <span class="site-lock-kicker">Website Preview</span>
+        <h1>Site Under Construction</h1>
+        <p>This website is currently being reviewed. Enter the preview code to continue.</p>
 
+        <form id="siteLockForm">
+          <input type="password" id="siteLockCode" placeholder="Enter preview code" />
+          <button type="submit">Enter Site</button>
+        </form>
 
+        <small id="siteLockError"></small>
+      </div>
+    </div>
 
+    <!-- NAVBAR -->
+    <header>
+      <nav class="navbar" id="home">
+        <a href="index.html" class="logo-brand">
+          <span class="logo">Sonya White</span>
+          <span class="logo-tagline">Comedian, Actor, Impressionist</span>
+        </a>
 
-  <!--SITE LOCK-->
-  <div id="siteLockOverlay" class="site-lock-overlay">
-  <div class="site-lock-card">
-    <span class="site-lock-kicker">Website Preview</span>
-    <h1>Site Under Construction</h1>
-    <p>This website is currently being reviewed. Enter the preview code to continue.</p>
+        <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="primaryNav" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-    <form id="siteLockForm">
-      <input type="password" id="siteLockCode" placeholder="Enter preview code" />
-      <button type="submit">Enter Site</button>
-    </form>
+        <ul class="nav-links" id="primaryNav">
+          <li><a href="index.html">Home</a></li>
 
-    <small id="siteLockError"></small>
+          <!-- BIO SCROLL LINK -->
+          <li><a href="#bio">Bio</a></li>
+
+          <li><a href="#tour">Tour</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- SEPTEMBER TOUR PROMO -->
+<section class="september-tour-section">
+
+  <div class="september-tour-bg-orb orb-one"></div>
+  <div class="september-tour-bg-orb orb-two"></div>
+  <div class="september-tour-bg-shine"></div>
+  <div class="september-tour-bg-lines"></div>
+
+  <div class="september-tour-stage">
+    <a href="#tour" class="september-tour-poster september-tour-click">
+      <img src="assets/images/september-tour.png" alt="September Tour 2026">
+    </a>
   </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- NAVBAR -->
-<header>
-  <nav class="navbar" id="home">
-    <a href="index.html" class="logo">Sonya White</a>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-
-      <!-- BIO SCROLL LINK -->
-      <li><a href="#bio">Bio</a></li>
-
-      <li><a href="#tour">Tour</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#showcase">Showcase</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-
-<!-- ABOUT HERO -->
-<section class="about-hero">
-
-
-  <div class="about-hero-art">
-
-<div class="hero-social-slice">
-  <a href="https://www.facebook.com/people/Sonya-White-Comedy/100063653014055/?ref=embed_page#" target="_blank" aria-label="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-  </a>
-
-  <a href="https://www.instagram.com/sonyawhitecomedy/" target="_blank" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
-
-  <a href="https://tiktok.com/@YOURURL" target="_blank" aria-label="TikTok">
-    <i class="fa-brands fa-tiktok"></i>
-  </a>
-</div>
-
-    <img src="assets/images/heroimg2.jpg" alt="Sonya White">
-
-    <div class="about-ticker">
-  <div class="about-ticker-track">
-    <span>sonyawhitecomedy.com</span>
-    <span>sonyawhitecomedy.com</span>
-    <span>sonyawhitecomedy.com</span>
-    <span>sonyawhitecomedy.com</span>
-    <span>sonyawhitecomedy.com</span>
-    <span>sonyawhitecomedy.com</span>
-  </div>
-</div>
-
-    <button class="hero-hotspot hotspot-1 modal-trigger" data-modal="bioModal">
-      <span>Bio</span>
-    </button>
-
-    <button class="hero-hotspot hotspot-2 modal-trigger" data-modal="tourModal">
-      <span>Tour Dates</span>
-    </button>
-
-    <button class="hero-hotspot hotspot-3 modal-trigger" data-modal="galleryModal">
-      <span>Gallery</span>
-    </button>
-
-    <button class="hero-hotspot hotspot-4 modal-trigger" data-modal="showcaseModal">
-      <span>Showcase</span>
-    </button>
-
-    <button class="hero-hotspot hotspot-5 modal-trigger" data-modal="cinemaModal">
-      <span>Cinema</span>
-    </button>
-
-  </div>
-
+<div class="september-tour-divider" aria-hidden="true"></div>
 </section>
 
-<!-- =========================
-     POPUP MODALS
-========================= -->
+    <!-- ABOUT HERO -->
+    <section class="about-hero">
 
-<!-- BIO MODAL -->
-<div class="custom-modal" id="bioModal">
+      <div class="about-hero-art">
 
-  <div class="custom-modal-content bio-modal-large">
+        <div class="hero-social-slice">
+          <a href="https://www.facebook.com/people/Sonya-White-Comedy/100063653014055/?ref=embed_page#" target="_blank" aria-label="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
 
-    <button class="hero-modal-close">&times;</button>
+          <a href="https://www.instagram.com/sonyawhitecomedy/" target="_blank" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
 
-    <div class="bio-modal-scroll">
+          <a href="https://tiktok.com/@YOURURL" target="_blank" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
 
-      <div class="bio-comedy-hero">
+          <a href="https://www.linkedin.com/in/sonya-white-56ab6113/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
 
-        <div class="bio-hero-copy">
-          <span class="bio-kicker">Meet The Comedian</span>
-
-          <h2>Sonya White</h2>
-
-          <p>
-            Clean comedy, Southern charm, sharp storytelling, and the kind of crowd
-            connection that makes every show feel personal.
-          </p>
         </div>
 
-        <div class="bio-hero-image">
-          <img src="assets/images/sonyaposter.png" alt="Sonya White">
+        <img src="assets/images/heroimg2.jpg" alt="Sonya White">
+
+        <div class="about-ticker">
+          <div class="about-ticker-track">
+            <span>sonyawhitecomedy.com</span>
+            <span>sonyawhitecomedy.com</span>
+            <span>sonyawhitecomedy.com</span>
+            <span>sonyawhitecomedy.com</span>
+            <span>sonyawhitecomedy.com</span>
+            <span>sonyawhitecomedy.com</span>
+          </div>
+        </div>
+
+        <button class="hero-hotspot hotspot-1 modal-trigger" data-modal="bioModal">
+          <span>Bio</span>
+        </button>
+
+        <button class="hero-hotspot hotspot-2 modal-trigger" data-modal="tourModal">
+          <span>Tour Dates</span>
+        </button>
+
+        <button class="hero-hotspot hotspot-3 modal-trigger" data-modal="galleryModal">
+          <span>Gallery</span>
+        </button>
+
+        <button class="hero-hotspot hotspot-4 modal-trigger" data-modal="showcaseModal">
+          <span>Showcase</span>
+        </button>
+
+        <button class="hero-hotspot hotspot-5 modal-trigger" data-modal="cinemaModal">
+          <span>Cinema</span>
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+    POPUP MODALS
+    ========================= -->
+
+    <!-- BIO MODAL -->
+    <div class="custom-modal" id="bioModal">
+
+      <div class="custom-modal-content bio-modal-large">
+
+        <button class="hero-modal-close">&times;</button>
+
+        <div class="bio-modal-scroll">
+
+          <div class="bio-comedy-hero">
+
+            <div class="bio-hero-copy">
+              <span class="bio-kicker">Meet Sonya</span>
+
+              <h2>Sonya White</h2>
+
+              <p>
+                Clean comedy, Southern charm, sharp storytelling, and the kind of crowd
+                connection that makes every show feel personal.
+              </p>
+            </div>
+
+            <div class="bio-hero-image single">
+              <img src="assets/images/sonya-headshot.jpg" alt="Sonya White">
+            </div>
+
+          </div>
+
+          <div class="bio-modal-body">
+
+            <div class="bio-main-content">
+              <div class="bio-card">
+                <span class="bio-card-label">About Sonya</span>
+
+                <p>
+                  Sonya White is originally from Virginia, she has combined southern charm with big
+                  city street smartsto create a show that won her multiple appearances on CBS’s “Star Search”
+                  and a promo spot on NBC’s “Last Comic Standing 4”.  Sonya has appeared onCMT’s comedy production
+                  “Southern Fried Chicks” which continues to tour live today. She has been featured on Comcast’s
+                  “Comedy Spotlight” and at “The U.S. Comedy Arts Festival 1999,” which aired on HBO, E, and Comedy Central.
+                </p>
+
+                <p>
+                  Sonya has been cast in a Richard DeWitt Film as Pickle Annie a wisecracking farm lady during the Civil War.
+                  The production is presented by New Film Group, LLC release date TBA. The Circle Network has premiered Sonya White on ZANIES
+                  “Stand Up Nashville!” in conjunction with OpryEntertainment.  Most recently released in 2022 is “Boot It Up,”
+                  Sonya’s Dry Bar Comedy Special produced by VIDANGEL Studios. Coming soon in 2026 “The Comedy Buzz” due to air on Amazon Prime.
+
+                  <p>
+                    White’s observational comedy is enhanced by dead-on impersonations and appropriate sound effects.  Her comedy show is based
+                    on real-life experiences and her fond-but irreverent-interactions with friends, family and the world at large.  White’s television credits
+                    also include roles on the Fox Network’s “Nightshift,” The Family Channel’s sitcom “Big Brother Jake” and MTV’s national promotion “Spring Break ’98.”
+                    She has played a colorful character on national promos for “The Jerry Springer Show,” and done cartoon impressions forThe Cartoon Network’s “Pick Your Shorts.”  Sonya is a SAG/AFTRA member
+                  </p>
+                </div>
+              </div>
+
+              <div class="bio-side-gallery bio-side-image-gallery">
+
+                <div class="bio-feature-image-card">
+                  <img src="assets/images/about-img2.png" alt="Sonya White comedy appearances">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
-      <div class="bio-modal-body">
+      <!-- TOUR MODAL -->
+      <div class="custom-modal" id="tourModal">
+        <div class="tour-modal-mini">
 
-        <div class="bio-main-content">
+          <button class="hero-modal-close" aria-label="Close tour modal">&times;</button>
 
-          <div class="bio-card">
-            <span class="bio-card-label">About Sonya</span>
+          <div class="tour-modal-scroll">
 
-            <p>
-              Sonya White has built a career entertaining audiences across the country
-              with relatable stories, clean humor, and a unique Southern perspective.
-              Her performances blend real-life experiences, sharp observations,
-              and hilarious crowd connection into a comedy show audiences remember.
-            </p>
+            <!-- HERO -->
+            <div class="tour-modal-poster-hero">
 
-            <p>
-              She has appeared on HBO, Comedy Central, NBC’s Last Comic Standing,
-              CBS, CMT’s Southern Fried Chicks, Cartoon Network,
-              and multiple national comedy tours and festivals.
-            </p>
+              <div class="tour-modal-hero-content">
+                <span class="tour-modal-kicker">
+                  <i class="fa-solid fa-location-dot"></i>
+                  Live Tour 2026
+                </span>
 
-            <p>
-              Whether performing in theaters, comedy clubs, cruise ships,
-              or corporate events, Sonya delivers a show that feels authentic,
-              energetic, and genuinely fun for all audiences.
-            </p>
+                <h2>Upcoming Shows</h2>
 
-          </div>
+                <p>
+                  Catch Sonya White live on stage with clean comedy, Southern charm,
+                  and a night full of laughs.
+                </p>
 
-        </div>
+                <div class="tour-modal-actions">
+                  <a href="#tour" class="tour-modal-main-btn close-and-scroll">
+                    View Full Tour
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                  <a href="#contactForm" class="tour-modal-main-btn secondary close-tour-scroll">
+                    Book Sonya
+                    <i class="fa-solid fa-envelope"></i>
+                  </a>
+                </div>
+              </div>
 
-        <div class="bio-side-gallery">
+              <div class="tour-poster-stack">
+                <div class="tour-poster-card">
+                  <img src="assets/images/sonyatourposter.png" alt="Sonya White tour poster">
+                </div>
+              </div>
 
-          <div class="bio-gallery-img large">
-            <img src="assets/images/sonya-headshot.jpg" alt="Sonya White">
-          </div>
+            </div>
 
-          <div class="bio-mini-card red">
-            <span>Seen On</span>
-            HBO · Comedy Central · NBC · CBS · CMT
-          </div>
+            <!-- FILTERS -->
+            <div class="tour-modal-filter-bar">
+              <button class="tour-modal-filter active" data-filter="all">
+                <i class="fa-solid fa-calendar-days"></i>
+                2026 Tour Dates
+              </button>
+            </div>
 
-          <div class="bio-mini-card blue">
-            <span>Perfect For</span>
-            Theaters · Clubs · Cruises · Corporate Events
-          </div>
+<div class="tour-modal-card-grid">
 
-        </div>
-
-      </div>
-
+  <!-- OCT 16 -->
+  <div class="tour-modal-event-card upcoming" data-type="upcoming">
+    <div class="tour-modal-date upcoming">
+      <span>OCT</span>
+      <strong>16</strong>
     </div>
 
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill upcoming">Upcoming</span>
+        <span class="tour-modal-type">Festival</span>
+      </div>
+
+      <h3>Kentucky Comedy Festival</h3>
+
+      <p class="tour-modal-venue">Wrather Hall</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Murray, Kentucky
+      </p>
+    </div>
+  </div>
+
+  <!-- SEP 26 -->
+  <div class="tour-modal-event-card upcoming" data-type="upcoming">
+    <div class="tour-modal-date upcoming">
+      <span>SEP</span>
+      <strong>26</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill upcoming">Upcoming</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Southern Fried Chicks</h3>
+
+      <p class="tour-modal-venue">The Honeywell Center</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Wabash, IN
+      </p>
+    </div>
+  </div>
+
+  <!-- SEP 25 -->
+  <div class="tour-modal-event-card upcoming" data-type="upcoming">
+    <div class="tour-modal-date upcoming">
+      <span>SEP</span>
+      <strong>25</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill upcoming">Upcoming</span>
+        <span class="tour-modal-type">Ballroom</span>
+      </div>
+
+      <h3>Southern Fried Chicks</h3>
+
+      <p class="tour-modal-venue">The Paramount Centre & Ballroom</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Anderson, IN
+      </p>
+    </div>
+  </div>
+
+  <!-- JUN 27 -->
+  <div class="tour-modal-event-card upcoming" data-type="upcoming">
+    <div class="tour-modal-date upcoming">
+      <span>JUN</span>
+      <strong>27</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill upcoming">Upcoming</span>
+        <span class="tour-modal-type">Fundraiser</span>
+      </div>
+
+      <h3>Puppy Party Fundraiser</h3>
+
+      <p class="tour-modal-venue">Fundraiser Event</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Crossville, TN
+      </p>
+    </div>
+  </div>
+
+  <!-- MAY 23 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAY</span>
+      <strong>23</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Blue Gate Theatre</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Shipshewana, IN
+      </p>
+    </div>
+  </div>
+
+  <!-- MAY 22 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAY</span>
+      <strong>22</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Goodyear Theatre</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Akron, OH
+      </p>
+    </div>
+  </div>
+
+  <!-- MAY 16 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAY</span>
+      <strong>16</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Live Event</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">Valencia Lakes</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Wimauma, FL
+      </p>
+    </div>
+  </div>
+
+  <!-- APR 10 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>APR</span>
+      <strong>10</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Casino</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Ameristar Casino</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Vicksburg, MS
+      </p>
+    </div>
+  </div>
+
+  <!-- MAR 28 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAR</span>
+      <strong>28</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Village Theatre</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Canton, MI
+      </p>
+    </div>
+  </div>
+
+  <!-- MAR 27 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAR</span>
+      <strong>27</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Ballroom</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">Gold Glow Ballroom</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Saginaw, MI
+      </p>
+    </div>
+  </div>
+
+  <!-- MAR 20 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAR</span>
+      <strong>20</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Cary Theatre</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Cary, NC
+      </p>
+    </div>
+  </div>
+
+  <!-- MAR 14 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAR</span>
+      <strong>14</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Lincoln Town Theatre</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Decatur, IL
+      </p>
+    </div>
+  </div>
+
+  <!-- MAR 13 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAR</span>
+      <strong>13</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Theatre</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">The Lincoln Theatre</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Belleville, IL
+      </p>
+    </div>
+  </div>
+
+  <!-- MAR 06 -->
+  <div class="tour-modal-event-card past" data-type="past">
+    <div class="tour-modal-date past">
+      <span>MAR</span>
+      <strong>06</strong>
+    </div>
+
+    <div class="tour-modal-event-info">
+      <div class="tour-modal-status-row">
+        <span class="tour-modal-status-pill past">Completed</span>
+        <span class="tour-modal-type">Comedy Club</span>
+      </div>
+
+      <h3>Sonya White Live</h3>
+
+      <p class="tour-modal-venue">Cozzy’s Comedy Club</p>
+
+      <p class="tour-modal-location">
+        <i class="fa-solid fa-location-dot"></i>
+        Tulsa, OK
+      </p>
+    </div>
   </div>
 
 </div>
 
-<!-- TOUR MODAL -->
-<div class="custom-modal" id="tourModal">
-  <div class="tour-modal-mini">
+          </div>
+        </div>
+      </div>
 
-    <button class="hero-modal-close" aria-label="Close tour modal">&times;</button>
+      <!-- GALLERY MODAL -->
+      <div class="custom-modal" id="galleryModal">
+        <div class="gallery-modal-upgraded">
 
-    <div class="tour-modal-scroll">
+          <button class="hero-modal-close">&times;</button>
 
-      <!-- HERO -->
-      <div class="tour-modal-poster-hero">
+          <div class="gallery-modal-glow glow-left"></div>
+          <div class="gallery-modal-glow glow-right"></div>
+          <div class="gallery-modal-grid-bg"></div>
 
-        <div class="tour-modal-hero-content">
-          <span class="tour-modal-kicker">
-            <i class="fa-solid fa-location-dot"></i>
-            Live Tour 2026
-          </span>
+          <!-- GALLERY PAGE CTA -->
+          <div class="gallery-modal-page-link">
+            <a href="#gallery" class="gallery-modal-view-btn close-gallery-scroll">
+              <span class="gallery-modal-view-kicker">
+                <i class="fa-solid fa-images"></i>
+                Sonya's Gallery
+              </span>
 
-          <h2>Upcoming Shows</h2>
+              <div class="gallery-modal-view-main">
+                <h2>View Full Gallery</h2>
 
-          <p>
-            Catch Sonya White live on stage with clean comedy, Southern charm,
-            and a night full of laughs.
-          </p>
-
-          <div class="tour-modal-actions">
-<a href="#tour" class="tour-modal-main-btn close-and-scroll">
-  View Full Tour
-  <i class="fa-solid fa-arrow-right"></i>
-</a>
-
-            <a href="contact.html" class="tour-modal-main-btn secondary">
-              Book Sonya
-              <i class="fa-solid fa-envelope"></i>
+                <div class="gallery-modal-arrow">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
             </a>
           </div>
-        </div>
 
-        <div class="tour-poster-stack">
-          <div class="tour-poster-card">
-            <img src="assets/images/sonyatourposter.png" alt="Sonya White tour poster">
+          <!-- FILTER BUTTONS -->
+          <div class="gallery-filter-showcase">
+
+            <button class="gallery-filter-card active" data-filter="club">
+              <img src="assets/images/clubcomedy-logo.PNG" alt="Club Comedy">
+            </button>
+            <!-- ADD BACK IF SHE WANTS
+            <button class="gallery-filter-card" data-filter="cruise">
+            <img src="assets/images/crusiecomedy-logo.PNG" alt="Cruise Comedy">
+            </button>
+            -->
+            <button class="gallery-filter-card" data-filter="theater">
+              <img src="assets/images/theatershows-logo.PNG" alt="Theater Shows">
+            </button>
+
+            <button class="gallery-filter-card" data-filter="corporate">
+              <img src="assets/images/corporatevents-logo.PNG" alt="Corporate Events">
+            </button>
+
+            <button class="gallery-filter-card" data-filter="cleancomedy">
+              <img src="assets/images/cleancomedy-logo.PNG" alt="Clean Comedy">
+            </button>
+
+            <button class="gallery-filter-card" data-filter="festivals">
+              <img src="assets/images/festivals-logo.PNG" alt="Festivals">
+            </button>
+
+            <button class="gallery-filter-card" data-filter="tv">
+              <img src="assets/images/tv-logo.PNG" alt="TV">
+            </button>
+
+            <button class="gallery-filter-card" data-filter="radio">
+              <img src="assets/images/radio-logo.PNG" alt="Radio">
+            </button>
+
           </div>
-        </div>
 
-      </div>
+          <!-- GALLERY CONTENT -->
+          <div class="gallery-content-wrap">
 
-      <!-- FILTERS -->
-      <div class="tour-modal-filter-bar">
-        <button class="tour-modal-filter active" data-filter="all">
-          <i class="fa-solid fa-calendar-days"></i>
-          2026 Tour Dates
-        </button>
-      </div>
+            <!-- CLUB -->
+            <div class="gallery-rail active" data-category="club">
+              <div class="gallery-rail-header">
+                <span>Now Viewing</span>
+                <h3>Club Comedy</h3>
+              </div>
 
-      <div class="tour-modal-card-grid">
+              <div class="gallery-flip-grid">
 
-        <!-- SEP 26 -->
-<div class="tour-modal-event-card upcoming" data-type="upcoming">
-  ...
-  <div class="tour-modal-date upcoming"><span>SEP</span><strong>26</strong></div>
-  <h3>The Honeywell Center</h3>
-</div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/clubshowimg-1.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/clubshowimg-6.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-<!-- SEP 25 -->
-<div class="tour-modal-event-card upcoming" data-type="upcoming">
-  ...
-  <div class="tour-modal-date upcoming"><span>SEP</span><strong>25</strong></div>
-  <h3>The Paramount Centre & Ballroom</h3>
-</div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/clubshowimg-2.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/clubshowimg-3.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-<!-- MAY 23 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date upcoming"><span>MAY</span><strong>23</strong></div>
-  <h3>The Blue Gate Theatre</h3>
-</div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/clubshowimg-4.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/clubshowimg-5.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-<!-- MAY 22 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date upcoming"><span>MAY</span><strong>22</strong></div>
-  <h3>The Goodyear Theatre</h3>
-</div>
+              </div>
+            </div>
 
-<!-- MAY 16 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAY</span><strong>16</strong></div>
-  <h3>Valencia Lakes</h3>
-</div>
+            <!-- THEATER -->
+            <div class="gallery-rail" data-category="theater" style="display:none;">
+              <div class="gallery-rail-header">
+                <span>Now Viewing</span>
+                <h3>Theater Shows</h3>
+              </div>
 
-<!-- APR 10 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>APR</span><strong>10</strong></div>
-  <h3>The Ameristar Casino</h3>
-</div>
+              <div class="gallery-flip-grid">
 
-<!-- MAR 28 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAR</span><strong>28</strong></div>
-  <h3>The Village Theater</h3>
-</div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/theaterimg-6.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/theaterimg-7.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-<!-- MAR 27 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAR</span><strong>27</strong></div>
-  <h3>Gold Glow Ballroom</h3>
-</div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/theaterimg-8.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/theaterimg-4.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-<!-- MAR 20 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAR</span><strong>20</strong></div>
-  <h3>The Cary Theatre</h3>
-</div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/theaterimg-9.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/theaterimg-11.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-<!-- MAR 14 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAR</span><strong>14</strong></div>
-  <h3>The Lincoln Town Theatre</h3>
-</div>
+              </div>
+            </div>
 
-<!-- MAR 13 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAR</span><strong>13</strong></div>
-  <h3>The Lincoln Theater</h3>
-</div>
+            <!-- CORPORATE -->
+            <div class="gallery-rail" data-category="corporate" style="display:none;">
+              <div class="gallery-rail-header">
+                <span>Now Viewing</span>
+                <h3>Corporate Events</h3>
+              </div>
 
-<!-- MAR 06 -->
-<div class="tour-modal-event-card past" data-type="past">
-  ...
-  <div class="tour-modal-date past"><span>MAR</span><strong>06</strong></div>
-  <h3>Cozzy’s Comedy Club</h3>
-</div>
+              <div class="gallery-flip-grid">
 
-      </div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/corporateimg-6.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/corporateimg-3.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
 
-    </div>
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/corporateimg-4.png" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/corporateimg-2.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/corporateimg-5.png" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/corporateimg-1.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- CLEAN COMEDY -->
+            <div class="gallery-rail" data-category="cleancomedy" style="display:none;">
+              <div class="gallery-rail-header">
+                <span>Now Viewing</span>
+                <h3>Clean Comedy</h3>
+              </div>
+
+              <div class="gallery-flip-grid">
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/cruiseshowimg-2.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/instapost-5.PNG" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/theaterimg-5.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/clubshowimg-3.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/instapost-3.PNG" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/theaterimg-7.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- FESTIVALS -->
+            <div class="gallery-rail" data-category="festivals" style="display:none;">
+              <div class="gallery-rail-header">
+                <span>Now Viewing</span>
+                <h3>Festivals</h3>
+              </div>
+
+              <div class="gallery-flip-grid">
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/festivalimg-1.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/festivalimg-2.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/festivalimg-3.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/festivalimg-4.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/festivalimg-5.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- TV -->
+            <div class="gallery-rail" data-category="tv" style="display:none;">
+              <div class="gallery-rail-header">
+                <span>Now Viewing</span>
+                <h3>TV</h3>
+              </div>
+
+              <div class="gallery-flip-grid">
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/clubshowimg-8.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/tvimg-2.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/huckabeeimg-1.jpg" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/clubshowimg-1.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gallery-flip-card">
+                  <div class="gallery-flip-inner">
+                    <div class="gallery-flip-face front">
+                      <img src="assets/images/comedycentral-logo.png" alt="">
+                    </div>
+                    <div class="gallery-flip-face back">
+                      <img src="assets/images/clubshowimg-3.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+<!-- RADIO -->
+<div class="gallery-rail" data-category="radio" style="display:none;">
+  <div class="gallery-rail-header">
+    <span>Now Viewing</span>
+    <h3>Radio</h3>
   </div>
-</div>
 
+  <div class="gallery-flip-grid">
 
-
-<!-- GALLERY MODAL -->
-<div class="custom-modal" id="galleryModal">
-  <div class="gallery-modal-upgraded">
-
-    <button class="hero-modal-close">&times;</button>
-
-    <div class="gallery-modal-glow glow-left"></div>
-    <div class="gallery-modal-glow glow-right"></div>
-    <div class="gallery-modal-grid-bg"></div>
-
-<!-- GALLERY PAGE CTA -->
-<div class="gallery-modal-page-link">
-
-<a href="#gallery" class="gallery-modal-view-btn close-gallery-scroll">
-
-  <span class="gallery-modal-view-kicker">
-    <i class="fa-solid fa-images"></i>
-    Sonya's Gallery
-  </span>
-
-  <div class="gallery-modal-view-main">
-    <h2>View Full Gallery</h2>
-
-    <div class="gallery-modal-arrow">
-      <i class="fa-solid fa-arrow-right"></i>
-    </div>
-  </div>
-
-</a>
-
-</div>
-
-   <div class="gallery-filter-showcase">
-
-  <button class="gallery-filter-card active" data-filter="club">
-    <img src="assets/images/clubcomedy-logo.PNG" alt="Club Comedy">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="cruise">
-    <img src="assets/images/crusiecomedy-logo.PNG" alt="Cruise Comedy">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="theater">
-    <img src="assets/images/theatershows-logo.PNG" alt="Theater Shows">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="corporate">
-    <img src="assets/images/corporatevents-logo.PNG" alt="Corporate Events">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="cleancomedy">
-    <img src="assets/images/cleancomedy-logo.PNG" alt="Clean Comedy">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="festivals">
-    <img src="assets/images/festivals-logo.PNG" alt="Festivals">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="tv">
-    <img src="assets/images/tv-logo.PNG" alt="TV">
-  </button>
-
-  <button class="gallery-filter-card" data-filter="radio">
-    <img src="assets/images/radio-logo.PNG" alt="Radio">
-  </button>
-
-</div>
-
-    <!-- GALLERY CONTENT -->
-    <div class="gallery-content-wrap">
-
-      <!-- CLUB -->
-      <div class="gallery-rail active" data-category="club">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Club Comedy</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <img src="assets/images/clubshowimg-1.jpg" alt="">
-          <img src="assets/images/huckabeeimg-1.jpg" alt="">
-          <img src="assets/images/clubshowimg-2.jpg" alt="">
-          <img src="assets/images/clubshowimg-3.jpg" alt="">
-          <!--
-          <img src="assets/images/clubshowimg-4.jpg" alt="">
-          <img src="assets/images/clubshowimg-5.jpg" alt="">
-          <img src="assets/images/clubshowimg-6.jpg" alt="">
-          <img src="assets/images/clubshowimg-7.jpg" alt="">
-          <img src="assets/images/clubshowimg-8.jpg" alt="">
-        -->
-        </div>
-      </div>
-
-      <!-- CRUISE -->
-      <div class="gallery-rail" data-category="cruise" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Cruise Comedy</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <!-- ADD CRUISE IMAGES -->
-        </div>
-      </div>
-
-      <!-- THEATER -->
-      <div class="gallery-rail" data-category="theater" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Theater Shows</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <img src="assets/images/theaterimg-6.jpg" alt="">
-          <img src="assets/images/theaterimg-7.jpg" alt="">
-          <img src="assets/images/theaterimg-4.jpg" alt="">
-          <img src="assets/images/theaterimg-2.JPG" alt="">
-          <!--
-          <img src="assets/images/theaterimg-3.jpeg" alt="">
-          <img src="assets/images/cruiseshowimg-3.jpeg" alt="">
-          <img src="assets/images/theaterimg-1.JPG" alt="">
-          <img src="assets/images/theaterimg-5.jpg" alt="">
-        -->
-        </div>
-      </div>
-
-      <!-- CORPORATE -->
-      <div class="gallery-rail" data-category="corporate" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Corporate Events</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <img src="assets/images/corporateimg-1.jpg" alt="">
-          <img src="assets/images/corporateimg-3.jpg" alt="">
-          <img src="assets/images/corporateimg-4.png" alt="">
-          <img src="assets/images/corporateimg-2.jpg" alt="">
-          <!--
-          <img src="assets/images/corporateimg-5.png" alt="">
-          <img src="assets/images/corporateimg-6.jpg" alt="">
-          <img src="assets/images/corporateimg-7.jpg" alt="">
-          <img src="assets/images/corporateimg-8.png" alt="">
-        -->
-        </div>
-      </div>
-
-      <!-- CLEAN COMEDY -->
-      <div class="gallery-rail" data-category="cleancomedy" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Clean Comedy</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <img src="assets/images/cruiseshowimg-2.jpg" alt="">
-        </div>
-      </div>
-
-      <!-- FESTIVALS -->
-      <div class="gallery-rail" data-category="festivals" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Festivals</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <img src="assets/images/festivalimg-1.jpg" alt="">
-          <img src="assets/images/festivalimg-2.jpg" alt="">
-          <img src="assets/images/festivalimg-3.jpg" alt="">
-          <img src="assets/images/festivalimg-4.jpg" alt="">
-          <!--
-          <img src="assets/images/festivalimg-5.jpg" alt="">
-        -->
-        </div>
-      </div>
-
-      <!-- TV -->
-      <div class="gallery-rail" data-category="tv" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>TV</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
-          <img src="assets/images/tvimg-1.jpg" alt="">
-          <img src="assets/images/tvimg-2.jpg" alt="">
-        </div>
-      </div>
-
-      <!-- RADIO -->
-      <div class="gallery-rail" data-category="radio" style="display:none;">
-        <div class="gallery-rail-header">
-          <span>Now Viewing</span>
-          <h3>Radio</h3>
-        </div>
-
-        <div class="gallery-photo-grid">
+    <div class="gallery-flip-card">
+      <div class="gallery-flip-inner">
+        <div class="gallery-flip-face front">
           <img src="assets/images/radioimg-1.jpg" alt="">
+        </div>
+        <div class="gallery-flip-face back">
+          <img src="assets/images/radioimg-1.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-flip-card">
+      <div class="gallery-flip-inner">
+        <div class="gallery-flip-face front">
+          <img src="assets/images/radioimg-2.jpg" alt="">
+        </div>
+        <div class="gallery-flip-face back">
           <img src="assets/images/radioimg-2.jpg" alt="">
         </div>
       </div>
+    </div>
 
+    <div class="gallery-flip-card">
+      <div class="gallery-flip-inner">
+        <div class="gallery-flip-face front">
+          <img src="assets/images/siriusxm.png" alt="">
+        </div>
+        <div class="gallery-flip-face back">
+          <img src="assets/images/siriusxm.png" alt="">
+        </div>
+      </div>
     </div>
 
   </div>
 </div>
+              </div>
+            </div>
 
-<div class="custom-modal" id="showcaseModal">
-  <div class="showcase-modal-wrapper">
-
-    <button class="hero-modal-close">&times;</button>
-
-    <div class="showcase-modal-hero">
-      <div class="showcase-hero-copy">
-        <span>Sonya’s Showcase</span>
-        <h2>Watch Sonya In Action</h2>
-        <p>Stand-up specials, interviews, television moments, and theater clips from Sonya White’s comedy career.</p>
-
-<a href="#showcase" class="cinema-showcase-btn close-showcase-scroll">
-  View All Videos
-  <i class="fa-solid fa-arrow-right"></i>
-</a>
-      </div>
-
-      <div class="showcase-hero-feature video-trigger" data-video="https://www.youtube.com/embed/hih45w9xdzQ">
-        <img src="https://img.youtube.com/vi/hih45w9xdzQ/maxresdefault.jpg" alt="">
-        <div class="showcase-feature-play">▶</div>
-        <div class="showcase-feature-label">Featured Clip</div>
-      </div>
-    </div>
-
-    <div class="showcase-bubble-row">
-      <div class="bubble active" data-filter="all"><span>All</span></div>
-      <div class="bubble" data-filter="warmups"><span>Stand-Up</span></div>
-      <div class="bubble" data-filter="tv"><span>TV</span></div>
-      <div class="bubble" data-filter="interviews"><span>Interviews</span></div>
-      <div class="bubble" data-filter="theater"><span>Theater</span></div>
-    </div>
-
-    <div class="showcase-modal-grid">
-
-      <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/hih45w9xdzQ">
-        <img src="https://img.youtube.com/vi/hih45w9xdzQ/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>DryBar Comedy Special "Boot It Up"</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/H1KOn6tU1w0">
-        <img src="https://img.youtube.com/vi/H1KOn6tU1w0/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>DryBar Comedy Special "Boot It Up Pt.2"</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/pZ1CqKU7NnY">
-        <img src="https://img.youtube.com/vi/pZ1CqKU7NnY/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>DryBar Comedy Special: Not A Dancer</h3>
-      </div>
-
-    <!--<div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/WKNxjOUj6sk">
-        <img src="https://img.youtube.com/vi/WKNxjOUj6sk/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>DryBar Comedy Special: No Luck</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/XhxK_vz055I">
-        <img src="https://img.youtube.com/vi/XhxK_vz055I/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>DryBar Comedy Special: Country Music</h3>
-      </div>-->
-
-      <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/dNUmrAEC8C8">
-        <img src="https://img.youtube.com/vi/dNUmrAEC8C8/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Jerry Springer Appearance</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/lwRLIElT_7c">
-        <img src="https://img.youtube.com/vi/lwRLIElT_7c/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>CMT</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/u9t5W5OBsYA">
-        <img src="https://img.youtube.com/vi/u9t5W5OBsYA/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Sonya White on Great Day KCWI 23</h3>
-      </div>
-
-      <!--<div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/5kniViRbZvM">
-        <img src="https://img.youtube.com/vi/5kniViRbZvM/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Channel 8 Eyewitness News</h3>
-      </div> -->
-
-      <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/-XLvgJaEZmE">
-        <img src="/assets/images/pbs-thumbnail.PNG" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Interview on PBS</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/MonLS9dA2v4">
-        <img src="https://img.youtube.com/vi/MonLS9dA2v4/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Country Roots and Younger Dudes - Stand Up Nashville!</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/0jo6_Dj5cGw">
-        <img src="https://img.youtube.com/vi/0jo6_Dj5cGw/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Why I Do Comedy - Stand Up Nashville!</h3>
-      </div>
-
-      <!--<div class="video-card podcast-card" data-category="interviews">
-        <img src="assets/images/podcast-thumbnail.PNG" alt="Podcast Interview">
-        <a href="https://podcasts.apple.com/us/podcast/the-comedy-of-sonya-white/id1607219003?i=1000554098026" target="_blank" class="play-btn">▶</a>
-        <h3>POX Podcast Appearance</h3>
-      </div> -->
-
-      <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/SB2y9M4GImY">
-        <img src="https://img.youtube.com/vi/SB2y9M4GImY/maxresdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Why Old Sitcoms Are The BEST</h3>
-      </div>
-
-      <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/0XoFwmWY7VI">
-        <img src="https://img.youtube.com/vi/0XoFwmWY7VI/hqdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Crazy Talk</h3>
-      </div>
-
-      <!-- <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/AZ2bpkdRlVE">
-        <img src="https://img.youtube.com/vi/AZ2bpkdRlVE/hqdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Sonya White Patsy Cline Working for Verizon</h3>
-      </div> -->
-
-      <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/pjoB0GNhfsc">
-        <img src="https://img.youtube.com/vi/pjoB0GNhfsc/hqdefault.jpg" alt="">
-        <div class="play-btn">▶</div>
-        <h3>Sonya White on Girls Getting Buzzed</h3>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- CINEMA MODAL -->
-<div class="custom-modal" id="cinemaModal">
-  <div class="cinema-modal-large">
-
-    <button class="hero-modal-close" aria-label="Close cinema modal">&times;</button>
-
-    <div class="cinema-modal-scroll">
-
-      <!-- HERO -->
-      <section class="cinema-hero">
-        <div class="cinema-hero-copy">
-          <span class="cinema-eyebrow">On Screen</span>
-          <h2>Cinema & TV</h2>
-          <p>
-            Character showcases, television appearances, and unforgettable on-camera comedy moments from Sonya White.
-          </p>
-        </div>
-
-        <div class="cinema-hero-card">
-          <span>TV Appearance</span>
-          <h3>Jerry Springer</h3>
-          <p>Mom</p>
-        </div>
-      </section>
-      <!-- PICKLE ANNIE -->
-      <section class="cinema-section pickle-section">
-
-        <div class="cinema-section-copy">
-          <span class="cinema-tag">Character Showcase</span>
-          <h3>Pickle Annie</h3>
-          <p>
-            Sonya brings Pickle Annie to life with sharp timing, Southern personality,
-            and a larger-than-life comedic presence built for screen and stage.
-          </p>
-        </div>
-
-        <div class="pickle-gallery">
-          <div class="pickle-main-img">
-            <img src="assets/images/cinemaimg-3.jpg" alt="Pickle Annie character still">
           </div>
 
-          <div class="pickle-side-stack">
-            <img src="assets/images/cinemaimg-2.jpg" alt="Pickle Annie scene still">
-            <img src="assets/images/cinemaimg-1.jpg" alt="Pickle Annie portrait">
+        </div>
+      </div>
+      <div class="custom-modal" id="showcaseModal">
+        <div class="showcase-modal-wrapper">
+
+          <button class="hero-modal-close">&times;</button>
+
+          <div class="showcase-modal-hero">
+            <div class="showcase-hero-copy">
+              <span>Sonya’s Showcase</span>
+              <h2>Watch Sonya In Action</h2>
+              <p>Stand-up specials, interviews, television moments, and theater clips from Sonya White’s comedy career.</p>
+
+              <a href="#showcase" class="cinema-showcase-btn close-showcase-scroll">
+                View All Videos
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="showcase-hero-feature video-trigger" data-video="https://www.youtube.com/embed/hih45w9xdzQ">
+              <img src="https://img.youtube.com/vi/hih45w9xdzQ/maxresdefault.jpg" alt="">
+              <div class="showcase-feature-play">▶</div>
+              <div class="showcase-feature-label">Featured Clip</div>
+            </div>
+          </div>
+
+          <div class="showcase-bubble-row">
+            <div class="bubble active" data-filter="all"><span>All</span></div>
+            <div class="bubble" data-filter="warmups"><span>Stand-Up</span></div>
+            <div class="bubble" data-filter="tv"><span>TV</span></div>
+            <div class="bubble" data-filter="interviews"><span>Interviews</span></div>
+            <div class="bubble" data-filter="theater"><span>Theater</span></div>
+            <div class="bubble" data-filter="clubhousecomedy"><span>Clubhouse Comedy</span></div>
+          </div>
+
+          <div class="showcase-modal-grid">
+
+            <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/hih45w9xdzQ">
+              <img src="https://img.youtube.com/vi/hih45w9xdzQ/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>DryBar Comedy Special "Boot It Up"</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/H1KOn6tU1w0">
+              <img src="https://img.youtube.com/vi/H1KOn6tU1w0/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>DryBar Comedy Special "Boot It Up Pt.2"</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/pZ1CqKU7NnY">
+              <img src="https://img.youtube.com/vi/pZ1CqKU7NnY/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>DryBar Comedy Special: Not A Dancer</h3>
+            </div>
+
+            <!--<div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/WKNxjOUj6sk">
+            <img src="https://img.youtube.com/vi/WKNxjOUj6sk/maxresdefault.jpg" alt="">
+            <div class="play-btn">▶</div>
+            <h3>DryBar Comedy Special: No Luck</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="warmups" data-video="https://www.youtube.com/embed/XhxK_vz055I">
+            <img src="https://img.youtube.com/vi/XhxK_vz055I/maxresdefault.jpg" alt="">
+            <div class="play-btn">▶</div>
+            <h3>DryBar Comedy Special: Country Music</h3>
+            </div>-->
+
+            <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/dNUmrAEC8C8">
+              <img src="https://img.youtube.com/vi/dNUmrAEC8C8/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Jerry Springer Appearance</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/lwRLIElT_7c">
+              <img src="https://img.youtube.com/vi/lwRLIElT_7c/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>CMT: Girls on a Harley Davidson</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/lwRLIElT_7c">
+              <img src="https://img.youtube.com/vi/lwRLIElT_7c/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>CMT: Bar People</h3>
+            </div>
+
+            <!--<div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/5kniViRbZvM">
+            <img src="https://img.youtube.com/vi/5kniViRbZvM/maxresdefault.jpg" alt="">
+            <div class="play-btn">▶</div>
+            <h3>Channel 8 Eyewitness News</h3>
+            </div> -->
+
+            <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/5Bw11r69LeA">
+              <img src="https://img.youtube.com/vi/5Bw11r69LeA/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Stand Up Nashville!</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/38_9_yxpTTw">
+              <img src="https://img.youtube.com/vi/38_9_yxpTTw/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Stand Up Nashville! #2</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/frgg4dADPk8">
+              <img src="https://img.youtube.com/vi/frgg4dADPk8/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Stand Up Nashville! #3</h3>
+            </div>
+
+            <!--<div class="video-card podcast-card" data-category="interviews">
+            <img src="assets/images/podcast-thumbnail.PNG" alt="Podcast Interview">
+            <a href="https://podcasts.apple.com/us/podcast/the-comedy-of-sonya-white/id1607219003?i=1000554098026" target="_blank" class="play-btn">▶</a>
+            <h3>POX Podcast Appearance</h3>
+            </div> -->
+
+            <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/SB2y9M4GImY">
+              <img src="https://img.youtube.com/vi/SB2y9M4GImY/maxresdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Why Old Sitcoms Are The BEST</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/id2y1MBp214">
+              <img src="https://img.youtube.com/vi/id2y1MBp214/hqdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Sonya White at MGM Brad Garret’s Comedy Club Las Vegas</h3>
+            </div>
+
+            <!-- <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/AZ2bpkdRlVE">
+            <img src="https://img.youtube.com/vi/AZ2bpkdRlVE/hqdefault.jpg" alt="">
+            <div class="play-btn">▶</div>
+            <h3>Sonya White Patsy Cline Working for Verizon</h3>
+            </div> -->
+
+            <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/pjoB0GNhfsc">
+              <img src="https://img.youtube.com/vi/pjoB0GNhfsc/hqdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Sonya White on Girls Getting Buzzed</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="clubhousecomedy" data-video="https://www.youtube.com/embed/HWKUSfwTfYQ">
+              <img src="https://img.youtube.com/vi/HWKUSfwTfYQ/hqdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Laughter in Paradise - Benefits of Living in a Gated Community</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="clubhousecomedy" data-video="https://www.youtube.com/embed/Bocpn-yevFc">
+              <img src="https://img.youtube.com/vi/Bocpn-yevFc/hqdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Laughter in Paradise - The Fear of Having Kids</h3>
+            </div>
+
+            <div class="video-card video-trigger" data-category="clubhousecomedy" data-video="https://www.youtube.com/embed/K0302F7mzZM">
+              <img src="https://img.youtube.com/vi/K0302F7mzZM/hqdefault.jpg" alt="">
+              <div class="play-btn">▶</div>
+              <h3>Laughter in Paradise - Puppy Love Gone Bad</h3>
+            </div>
+
           </div>
         </div>
+      </div>
 
-      </section>
-<div class="cinema-character-divider">
-  <div class="cinema-divider-line"></div>
-</div>
-      <!-- JERRY SPRINGER -->
-      <section class="cinema-section jerry-section">
+      <!-- CINEMA MODAL -->
+      <div class="custom-modal" id="cinemaModal">
+        <div class="cinema-modal-large">
 
-        <div class="jerry-video-wrap">
-          <div class="jerry-video">
-            <iframe 
-              src="https://www.youtube.com/embed/dNUmrAEC8C8"
-              title="Sonya White Jerry Springer Appearance"
+          <button class="hero-modal-close" aria-label="Close cinema modal">&times;</button>
+
+          <div class="cinema-modal-scroll">
+
+            <!-- HERO -->
+            <section class="cinema-hero">
+              <div class="cinema-hero-copy">
+                <span class="cinema-eyebrow">On Screen</span>
+                <h2>Cinema & TV</h2>
+                <p>
+                  Character showcases, television appearances, and unforgettable on-camera comedy moments from Sonya White.
+                </p>
+              </div>
+
+              <div class="cinema-hero-card">
+                <span>TV Appearance</span>
+                <h3>Jerry Springer</h3>
+                <p>Mom</p>
+              </div>
+            </section>
+
+            <!-- JERRY SPRINGER -->
+            <section class="cinema-section jerry-section">
+
+              <div class="jerry-video-wrap">
+                <div class="jerry-video">
+                  <iframe
+                  src="https://www.youtube.com/embed/dNUmrAEC8C8"
+                  title="Sonya White Jerry Springer Appearance"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+
+            <div class="cinema-section-copy jerry-copy">
+              <span class="jerry-cinema-tag">TV Appearance</span>
+              <h3>"Mom" on Jerry Springer</h3>
+              <p>
+                A featured television moment showcasing Sonya White’s comedic timing,
+                on-camera personality, and unforgettable screen presence.
+              </p>
+            </div>
+
+          </section>
+
+          <div class="cinema-character-divider">
+            <div class="cinema-divider-line"></div>
+          </div>
+
+          <!-- PICKLE ANNIE -->
+          <section class="cinema-section pickle-section">
+
+            <div class="cinema-section-copy">
+              <span class="cinema-tag">Character Showcase</span>
+              <h3>Pickle Annie</h3>
+              <p>
+                Sonya brings Pickle Annie to life with sharp timing, Southern personality,
+                and a larger-than-life comedic presence built for screen and stage.
+              </p>
+            </div>
+
+            <div class="pickle-gallery">
+              <div class="pickle-main-img">
+                <img src="assets/images/cinemaimg-3.jpg" alt="Pickle Annie character still">
+              </div>
+
+              <div class="pickle-side-stack">
+                <img src="assets/images/cinemaimg-2.jpg" alt="Pickle Annie scene still">
+                <img src="assets/images/cinemaimg-1.jpg" alt="Pickle Annie portrait">
+              </div>
+            </div>
+
+          </section>
+
+          <div class="cinema-character-divider blue-divider">
+            <div class="cinema-divider-line"></div>
+          </div>
+
+          <!-- NEW BLUE VIDEO SECTION -->
+          <section class="cinema-section cinema-blue-section">
+
+            <div class="cinema-section-copy cinema-blue-copy">
+              <span class="blue-cinema-tag">Cinema</span>
+              <h3>Unhappy Camper</h3>
+              <p>
+                The Nephew
+              </p>
+            </div>
+
+            <div class="jerry-video-wrap">
+              <div class="jerry-video blue-video">
+                <iframe
+                src="https://www.youtube.com/embed/giOXW6J4jJc"
+                title="Sonya White Video Feature"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+        </section>
+
+        <div class="cinema-character-divider green-divider">
+          <div class="cinema-divider-line"></div>
+        </div>
+
+        <!-- NEW GREEN VIDEO SECTION -->
+        <section class="cinema-section cinema-green-section">
+
+          <div class="jerry-video-wrap">
+            <div class="jerry-video green-video">
+              <iframe
+              src="https://www.youtube.com/embed/CkZ05UvfPd8"
+              title="Sonya White Video Feature"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
             </iframe>
           </div>
         </div>
 
-        <div class="cinema-section-copy jerry-copy">
-          <span class="jerry-cinema-tag">TV Appearance</span>
-          <h3>"Mom" on Jerry Springer</h3>
+        <div class="cinema-section-copy cinema-green-copy">
+          <span class="green-cinema-tag">Cinema</span>
+          <h3>After The Show</h3>
           <p>
-            A featured television moment showcasing Sonya White’s comedic timing,
-            on-camera personality, and unforgettable screen presence.
+            After the Show Skit created by Sonya White
           </p>
         </div>
 
@@ -783,190 +1294,176 @@
     </div>
   </div>
 </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const showcaseButton = document.querySelector('[data-modal="showcaseModal"]');
+    const showcaseModal = document.getElementById("showcaseModal");
+    const showcaseBubbles = Array.from(showcaseModal.querySelectorAll(".bubble"));
+    const showcaseCards = Array.from(showcaseModal.querySelectorAll(".video-card"));
 
+    let showcaseAutoPlay;
+    let currentFilterIndex = 1; // starts at Stand Up, not All
 
+    function showShowcaseFilter(filter) {
+      showcaseBubbles.forEach(bubble => {
+        bubble.classList.toggle("active", bubble.dataset.filter === filter);
+      });
 
-
-
-<!-- MODAL -->
-<div class="video-modal" id="videoModal">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <iframe id="modalVideo" allowfullscreen></iframe>
-  </div>
-</div>
-
-<script src="script.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const showcaseButton = document.querySelector('[data-modal="showcaseModal"]');
-  const showcaseModal = document.getElementById("showcaseModal");
-  const showcaseBubbles = Array.from(showcaseModal.querySelectorAll(".bubble"));
-  const showcaseCards = Array.from(showcaseModal.querySelectorAll(".video-card"));
-
-  let showcaseAutoPlay;
-  let currentFilterIndex = 1; // starts at Stand Up, not All
-
-  function showShowcaseFilter(filter) {
-    showcaseBubbles.forEach(bubble => {
-      bubble.classList.toggle("active", bubble.dataset.filter === filter);
-    });
-
-    showcaseCards.forEach(card => {
-      if (filter === "all" || card.dataset.category === filter) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  }
-
-  function startShowcaseAutoPlay() {
-    clearInterval(showcaseAutoPlay);
-
-    currentFilterIndex = 1;
-
-    if (showcaseBubbles[currentFilterIndex]) {
-      showShowcaseFilter(showcaseBubbles[currentFilterIndex].dataset.filter);
+      showcaseCards.forEach(card => {
+        if (filter === "all" || card.dataset.category === filter) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
     }
 
-    showcaseAutoPlay = setInterval(() => {
-      currentFilterIndex++;
+    function startShowcaseAutoPlay() {
+      clearInterval(showcaseAutoPlay);
 
-      if (currentFilterIndex >= showcaseBubbles.length) {
-        currentFilterIndex = 1;
+      currentFilterIndex = 1;
+
+      if (showcaseBubbles[currentFilterIndex]) {
+        showShowcaseFilter(showcaseBubbles[currentFilterIndex].dataset.filter);
       }
 
-      const nextFilter = showcaseBubbles[currentFilterIndex].dataset.filter;
-      showShowcaseFilter(nextFilter);
+      showcaseAutoPlay = setInterval(() => {
+        currentFilterIndex++;
 
-    }, 3000);
-  }
-
-  function stopShowcaseAutoPlay() {
-    clearInterval(showcaseAutoPlay);
-  }
-
-  showcaseButton.addEventListener("click", () => {
-    setTimeout(startShowcaseAutoPlay, 250);
-  });
-
-  showcaseBubbles.forEach((bubble, index) => {
-    bubble.addEventListener("click", () => {
-      currentFilterIndex = index;
-      stopShowcaseAutoPlay();
-      showShowcaseFilter(bubble.dataset.filter);
-    });
-  });
-
-  showcaseModal.querySelector(".hero-modal-close").addEventListener("click", () => {
-    stopShowcaseAutoPlay();
-  });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const galleryButton = document.querySelector('[data-modal="galleryModal"]');
-  const galleryModal = document.getElementById("galleryModal");
-
-  const galleryFilters = Array.from(galleryModal.querySelectorAll(".gallery-filter-card"));
-  const galleryRails = Array.from(galleryModal.querySelectorAll(".gallery-rail"));
-
-  let galleryAutoPlay;
-  let currentFilterIndex = 0;
-  let currentImageIndex = 0;
-  let currentCards = [];
-  let startX = 0;
-  let isDragging = false;
-
-  function buildCardShells() {
-    galleryRails.forEach(rail => {
-      const grid = rail.querySelector(".gallery-photo-grid");
-      if (!grid || grid.dataset.cardsBuilt === "true") return;
-
-      const images = Array.from(grid.querySelectorAll(":scope > img"));
-
-      images.forEach((img, index) => {
-        const shell = document.createElement("div");
-        shell.className = "gallery-card-shell gallery-card-hidden";
-
-        const inner = document.createElement("div");
-        inner.className = "gallery-card-inner";
-
-        const back = document.createElement("div");
-        back.className = "gallery-card-back";
-
-        const face = document.createElement("div");
-        face.className = "gallery-card-face";
-
-        img.remove();
-        face.appendChild(img);
-
-        inner.appendChild(back);
-        inner.appendChild(face);
-        shell.appendChild(inner);
-        grid.appendChild(shell);
-
-        shell.addEventListener("click", () => {
-          stopGalleryAutoPlay();
-          currentImageIndex = index;
-          updateGalleryDeck(true);
-        });
-      });
-
-      const prev = document.createElement("button");
-      prev.className = "gallery-deck-nav gallery-deck-prev";
-      prev.innerHTML = "‹";
-
-      const next = document.createElement("button");
-      next.className = "gallery-deck-nav gallery-deck-next";
-      next.innerHTML = "›";
-
-      grid.appendChild(prev);
-      grid.appendChild(next);
-
-      prev.addEventListener("click", e => {
-        e.stopPropagation();
-        stopGalleryAutoPlay();
-        previousGalleryCard();
-      });
-
-      next.addEventListener("click", e => {
-        e.stopPropagation();
-        stopGalleryAutoPlay();
-        nextGalleryCard(false);
-      });
-
-      grid.addEventListener("pointerdown", e => {
-        isDragging = true;
-        startX = e.clientX;
-      });
-
-      grid.addEventListener("pointerup", e => {
-        if (!isDragging) return;
-
-        const diff = e.clientX - startX;
-
-        if (Math.abs(diff) > 45) {
-          stopGalleryAutoPlay();
-
-          if (diff < 0) {
-            nextGalleryCard(false);
-          } else {
-            previousGalleryCard();
-          }
+        if (currentFilterIndex >= showcaseBubbles.length) {
+          currentFilterIndex = 1;
         }
 
-        isDragging = false;
-      });
+        const nextFilter = showcaseBubbles[currentFilterIndex].dataset.filter;
+        showShowcaseFilter(nextFilter);
 
-      grid.dataset.cardsBuilt = "true";
+      }, 3000);
+    }
+
+    function stopShowcaseAutoPlay() {
+      clearInterval(showcaseAutoPlay);
+    }
+
+    showcaseButton.addEventListener("click", () => {
+      setTimeout(startShowcaseAutoPlay, 250);
     });
-  }
 
-  function updateGalleryDeck(instantFlip = false) {
-    currentCards.forEach((card, index) => {
-      card.classList.remove(
+    showcaseBubbles.forEach((bubble, index) => {
+      bubble.addEventListener("click", () => {
+        currentFilterIndex = index;
+        stopShowcaseAutoPlay();
+        showShowcaseFilter(bubble.dataset.filter);
+      });
+    });
+
+    showcaseModal.querySelector(".hero-modal-close").addEventListener("click", () => {
+      stopShowcaseAutoPlay();
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const galleryButton = document.querySelector('[data-modal="galleryModal"]');
+    const galleryModal = document.getElementById("galleryModal");
+
+    const galleryFilters = Array.from(galleryModal.querySelectorAll(".gallery-filter-card"));
+    const galleryRails = Array.from(galleryModal.querySelectorAll(".gallery-rail"));
+
+    let galleryAutoPlay;
+    let currentFilterIndex = 0;
+    let currentImageIndex = 0;
+    let currentCards = [];
+    let startX = 0;
+    let isDragging = false;
+
+    function buildCardShells() {
+      galleryRails.forEach(rail => {
+        const grid = rail.querySelector(".gallery-photo-grid");
+        if (!grid || grid.dataset.cardsBuilt === "true") return;
+
+        const images = Array.from(grid.querySelectorAll(":scope > img"));
+
+        images.forEach((img, index) => {
+          const shell = document.createElement("div");
+          shell.className = "gallery-card-shell gallery-card-hidden";
+
+          const inner = document.createElement("div");
+          inner.className = "gallery-card-inner";
+
+          const back = document.createElement("div");
+          back.className = "gallery-card-back";
+
+          const face = document.createElement("div");
+          face.className = "gallery-card-face";
+
+          img.remove();
+          face.appendChild(img);
+
+          inner.appendChild(back);
+          inner.appendChild(face);
+          shell.appendChild(inner);
+          grid.appendChild(shell);
+
+          shell.addEventListener("click", () => {
+            stopGalleryAutoPlay();
+            currentImageIndex = index;
+            updateGalleryDeck(true);
+          });
+        });
+
+        const prev = document.createElement("button");
+        prev.className = "gallery-deck-nav gallery-deck-prev";
+        prev.innerHTML = "‹";
+
+        const next = document.createElement("button");
+        next.className = "gallery-deck-nav gallery-deck-next";
+        next.innerHTML = "›";
+
+        grid.appendChild(prev);
+        grid.appendChild(next);
+
+        prev.addEventListener("click", e => {
+          e.stopPropagation();
+          stopGalleryAutoPlay();
+          previousGalleryCard();
+        });
+
+        next.addEventListener("click", e => {
+          e.stopPropagation();
+          stopGalleryAutoPlay();
+          nextGalleryCard(false);
+        });
+
+        grid.addEventListener("pointerdown", e => {
+          isDragging = true;
+          startX = e.clientX;
+        });
+
+        grid.addEventListener("pointerup", e => {
+          if (!isDragging) return;
+
+          const diff = e.clientX - startX;
+
+          if (Math.abs(diff) > 45) {
+            stopGalleryAutoPlay();
+
+            if (diff < 0) {
+              nextGalleryCard(false);
+            } else {
+              previousGalleryCard();
+            }
+          }
+
+          isDragging = false;
+        });
+
+        grid.dataset.cardsBuilt = "true";
+      });
+    }
+
+    function updateGalleryDeck(instantFlip = false) {
+      currentCards.forEach((card, index) => {
+        card.classList.remove(
         "gallery-card-active",
         "gallery-card-left",
         "gallery-card-right",
@@ -974,168 +1471,165 @@ document.addEventListener("DOMContentLoaded", () => {
         "gallery-card-back-right",
         "gallery-card-hidden",
         "is-flipped"
-      );
+        );
 
-      if (index === currentImageIndex) {
-        card.classList.add("gallery-card-active");
-      } else if (index === currentImageIndex - 1) {
-        card.classList.add("gallery-card-left");
-      } else if (index === currentImageIndex + 1) {
-        card.classList.add("gallery-card-right");
-      } else if (index === currentImageIndex - 2) {
-        card.classList.add("gallery-card-back-left");
-      } else if (index === currentImageIndex + 2) {
-        card.classList.add("gallery-card-back-right");
-      } else {
-        card.classList.add("gallery-card-hidden");
-      }
-    });
+        if (index === currentImageIndex) {
+          card.classList.add("gallery-card-active");
+        } else if (index === currentImageIndex - 1) {
+          card.classList.add("gallery-card-left");
+        } else if (index === currentImageIndex + 1) {
+          card.classList.add("gallery-card-right");
+        } else if (index === currentImageIndex - 2) {
+          card.classList.add("gallery-card-back-left");
+        } else if (index === currentImageIndex + 2) {
+          card.classList.add("gallery-card-back-right");
+        } else {
+          card.classList.add("gallery-card-hidden");
+        }
+      });
 
-    setTimeout(() => {
-      currentCards.forEach((card, index) => {
-        if (
+      setTimeout(() => {
+        currentCards.forEach((card, index) => {
+          if (
           index === currentImageIndex ||
           index === currentImageIndex - 1 ||
           index === currentImageIndex + 1 ||
           index === currentImageIndex - 2 ||
           index === currentImageIndex + 2
-        ) {
-          card.classList.add("is-flipped");
+          ) {
+            card.classList.add("is-flipped");
+          }
+        });
+      }, instantFlip ? 80 : 850);
+    }
+
+    function showGalleryFilter(filter) {
+      galleryFilters.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.filter === filter);
+      });
+
+      galleryRails.forEach(rail => {
+        if (rail.dataset.category === filter) {
+          rail.style.display = "block";
+
+          currentCards = Array.from(rail.querySelectorAll(".gallery-card-shell"));
+          currentImageIndex = 0;
+
+          currentCards.forEach(card => {
+            card.classList.remove("is-flipped");
+            card.classList.add("gallery-card-hidden");
+          });
+
+          setTimeout(() => {
+            updateGalleryDeck(false);
+          }, 220);
+        } else {
+          rail.style.display = "none";
         }
       });
-}, instantFlip ? 80 : 850);
-  }
+    }
 
-  function showGalleryFilter(filter) {
-    galleryFilters.forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.filter === filter);
-    });
+    function nextGalleryCard(autoAdvanceFilter = true) {
+      if (!currentCards.length) return;
 
-    galleryRails.forEach(rail => {
-      if (rail.dataset.category === filter) {
-        rail.style.display = "block";
+      currentImageIndex++;
 
-        currentCards = Array.from(rail.querySelectorAll(".gallery-card-shell"));
-        currentImageIndex = 0;
+      if (currentImageIndex >= currentCards.length) {
+        if (!autoAdvanceFilter) {
+          currentImageIndex = 0;
+          updateGalleryDeck(false);
+          return;
+        }
 
-        currentCards.forEach(card => {
-          card.classList.remove("is-flipped");
-          card.classList.add("gallery-card-hidden");
-        });
+        currentFilterIndex++;
 
-setTimeout(() => {
-  updateGalleryDeck(false);
-}, 220);
-      } else {
-        rail.style.display = "none";
-      }
-    });
-  }
+        if (currentFilterIndex >= galleryFilters.length) {
+          currentFilterIndex = 0;
+        }
 
-  function nextGalleryCard(autoAdvanceFilter = true) {
-    if (!currentCards.length) return;
-
-    currentImageIndex++;
-
-    if (currentImageIndex >= currentCards.length) {
-      if (!autoAdvanceFilter) {
-        currentImageIndex = 0;
-        updateGalleryDeck(false);
+        showGalleryFilter(galleryFilters[currentFilterIndex].dataset.filter);
         return;
       }
 
-      currentFilterIndex++;
+      updateGalleryDeck(false);
+    }
 
-      if (currentFilterIndex >= galleryFilters.length) {
-        currentFilterIndex = 0;
+    function previousGalleryCard() {
+      if (!currentCards.length) return;
+
+      currentImageIndex--;
+
+      if (currentImageIndex < 0) {
+        currentImageIndex = currentCards.length - 1;
       }
 
+      updateGalleryDeck(false);
+    }
+
+    function startGalleryAutoPlay() {
+      clearInterval(galleryAutoPlay);
+
+      buildCardShells();
+
+      currentFilterIndex = 0;
       showGalleryFilter(galleryFilters[currentFilterIndex].dataset.filter);
-      return;
+
+      galleryAutoPlay = setInterval(() => {
+        nextGalleryCard(true);
+      }, 3400);
     }
 
-    updateGalleryDeck(false);
-  }
-
-  function previousGalleryCard() {
-    if (!currentCards.length) return;
-
-    currentImageIndex--;
-
-    if (currentImageIndex < 0) {
-      currentImageIndex = currentCards.length - 1;
+    function stopGalleryAutoPlay() {
+      clearInterval(galleryAutoPlay);
     }
 
-    updateGalleryDeck(false);
-  }
+    if (galleryButton) {
+      galleryButton.addEventListener("click", () => {
+        setTimeout(startGalleryAutoPlay, 300);
+      });
+    }
 
-  function startGalleryAutoPlay() {
-    clearInterval(galleryAutoPlay);
+    galleryFilters.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        currentFilterIndex = index;
+        stopGalleryAutoPlay();
+        buildCardShells();
+        showGalleryFilter(btn.dataset.filter);
+      });
+    });
+
+    const closeBtn = galleryModal.querySelector(".hero-modal-close");
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", stopGalleryAutoPlay);
+    }
 
     buildCardShells();
-
-    currentFilterIndex = 0;
-    showGalleryFilter(galleryFilters[currentFilterIndex].dataset.filter);
-
-    galleryAutoPlay = setInterval(() => {
-      nextGalleryCard(true);
-    }, 3400);
-  }
-
-  function stopGalleryAutoPlay() {
-    clearInterval(galleryAutoPlay);
-  }
-
-  if (galleryButton) {
-    galleryButton.addEventListener("click", () => {
-      setTimeout(startGalleryAutoPlay, 300);
-    });
-  }
-
-  galleryFilters.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      currentFilterIndex = index;
-      stopGalleryAutoPlay();
-      buildCardShells();
-      showGalleryFilter(btn.dataset.filter);
-    });
+    showGalleryFilter("club");
   });
-
-  const closeBtn = galleryModal.querySelector(".hero-modal-close");
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", stopGalleryAutoPlay);
-  }
-
-  buildCardShells();
-  showGalleryFilter("club");
-});
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const revealSections = document.querySelectorAll(".reveal-section");
+  document.addEventListener("DOMContentLoaded", () => {
+    const revealSections = document.querySelectorAll(".reveal-section");
 
-  revealSections.forEach(section => {
-    section.classList.add("js-reveal-ready");
-  });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-      }
+    revealSections.forEach(section => {
+      section.classList.add("js-reveal-ready");
     });
-  }, {
-    threshold: 0.25
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    revealSections.forEach(section => observer.observe(section));
   });
-
-  revealSections.forEach(section => observer.observe(section));
-});
 </script>
-</body>
-</html>
-
 
 
 <section id="bio" class="home-about-section">
@@ -1164,7 +1658,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="hero-description">
 
         <p class="hero-line delay-1">
-          Coming to the stage is a very funny lady who mixes 
+          Coming to the stage is a very funny lady who mixes
           <span>Southern charm</span> with big city street smarts.
         </p>
 
@@ -1174,7 +1668,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </p>
 
         <p class="hero-line delay-3">
-          Voice work on Cartoon Network’s <span>Pick Your Shorts</span> 
+          Voice work on Cartoon Network’s <span>Pick Your Shorts</span>
           and her DryBar special <span>“Boot It Up”</span>.
         </p>
 
@@ -1187,7 +1681,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <div class="hero-buttons">
-        <a href="#featured-video" class="hero-btn primary">Learn More</a>
+   
         <a href="#showcase" class="hero-btn secondary">Watch Clips</a>
       </div>
 
@@ -1195,630 +1689,690 @@ document.addEventListener("DOMContentLoaded", () => {
 
   </section>
 
-<!-- FEATURED SONYA / VIDEO SECTION -->
-<section id="featured-video" class="about-feature-video reveal-section">
+  <!-- FEATURED SONYA / VIDEO SECTION -->
+  <section id="featured-video" class="about-feature-video reveal-section">
 
-  <div class="about-video-bg-grid"></div>
-  <div class="about-video-orb orb-one"></div>
-  <div class="about-video-orb orb-two"></div>
+    <div class="about-video-bg-grid"></div>
+    <div class="about-video-orb orb-one"></div>
+    <div class="about-video-orb orb-two"></div>
 
-  <div class="about-feature-inner">
+    <div class="about-feature-inner">
 
-    <!-- TEXT -->
-    <div class="about-feature-copy reveal-left">
+      <!-- TEXT -->
+      <div class="about-feature-copy reveal-left">
 
-      <span class="about-video-kicker">
-        <i class="fa-solid fa-video"></i>
-        Featured Introduction
-      </span>
+        <span class="about-video-kicker">
+          <i class="fa-solid fa-video"></i>
+          Featured Introduction
+        </span>
 
-      <h2>Southern Charm. Big City Street Smarts.</h2>
+        <h2>Southern Charm. Big City Street Smarts.</h2>
 
-      <p>
-        Sonya White brings clean comedy, sharp storytelling, and unforgettable Southern personality to every stage she steps on.
-      </p>
+        <p>
+          Sonya White brings clean comedy, sharp storytelling, and unforgettable Southern personality to every stage she steps on.
+        </p>
 
-      <p>
-        From theaters and cruise ships to corporate events and national appearances, Sonya connects with audiences through comedy that feels real, relatable, and genuinely hilarious.
-      </p>
+        <p>
+          From theaters and cruise ships to corporate events and national appearances, Sonya connects with audiences through comedy that feels real, relatable, and genuinely hilarious.
+        </p>
 
-      <div class="about-video-actions">
-<a href="#tour" class="about-video-btn">
-  See Upcoming Shows
-  <i class="fa-solid fa-arrow-right"></i>
-</a>
+        <div class="about-video-actions">
+          <a href="#tour" class="about-video-btn">
+            See Upcoming Shows
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- MEDIA -->
+      <div class="about-feature-media reveal-right">
+
+        <div class="about-video-card large-feature-video">
+
+          <div class="video-frame-wrap promo-image-frame">
+            <img src="assets/images/intropicture.jpg" alt="Sonya White Featured Promo">
+          </div>
+
+        </div>
+
+        <div class="about-pull-quote">
+          “Only F bomb I use is fun.”
+        </div>
+
       </div>
 
     </div>
 
-    <!-- MEDIA -->
-    <div class="about-feature-media reveal-right">
-
-      <div class="about-video-card large-feature-video">
-
-        <div class="about-video-label">
-          <span></span>
-          Featured Promo Reel
-        </div>
-
-        <div class="video-frame-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/NvUUN-zc7FM?si=zWI7H2iz1fclceqA"
-            title="Sonya White Featured Video"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-      </div>
-
-<div class="about-sonya-poster">
-  <img src="assets/images/about-img2.png" alt="Sonya White">
-
-  <div class="about-pull-quote">
-    “Only F bomb I use is fun.”
   </div>
+
+</section>
+
+</section>
+
+<!-- CLEAN COMEDY PROMO SECTION -->
+<section class="clean-comedy-section">
+
+  <div class="clean-comedy-orb orb-one"></div>
+  <div class="clean-comedy-orb orb-two"></div>
+  <div class="clean-comedy-sparkle"></div>
+  <div class="clean-comedy-lines"></div>
+
+  <div class="clean-comedy-stage">
+    <div class="clean-comedy-poster">
+      <img src="assets/images/sonyasplitposter.jpg" alt="Sonya White Clean Comedy">
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- KENTUCKY COMEDY FESTIVAL PROMO -->
+<section class="kentucky-comedy-section">
+
+  <div class="kentucky-comedy-light light-one"></div>
+  <div class="kentucky-comedy-light light-two"></div>
+  <div class="kentucky-comedy-light light-three"></div>
+  <div class="kentucky-comedy-grid"></div>
+
+  <div class="kentucky-comedy-stage">
+
+    <div class="kentucky-comedy-poster">
+      <img src="assets/images/promoimg-2.jpg" alt="Sonya White Kentucky Comedy Festival">
+
+      <a
+      href="https://share.google/6YWcaC2MYIdQYM2vM"
+      class="promo-ticket-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      >
+      Buy Tickets
+    </a>
+  </div>
+
 </div>
 
+</section>
+
+</section>
+<!-- RIGHT SIDE -->
+<div class="tour-list-column" id="tour">
+
+  <!-- FILTERS -->
+  <section class="tour-control-section compact-filter">
+
+    <div class="tour-filter-bar">
+
+      <div class="filter-group">
+
+        <button class="tour-btn active" data-filter="all">
+          <i class="fa-solid fa-layer-group"></i>
+          2026
+        </button>
+
+      </div>
+
+      <div class="sort-wrapper">
+
+        <label for="sortSelect">Sort</label>
+
+        <select id="sortSelect">
+          <option value="soonest">Soonest First</option>
+          <option value="latest">Latest First</option>
+        </select>
+
+      </div>
+
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- TOUR GRID -->
+  <section class="tour-grid" id="tourGrid">
 
-</section>
+    <!-- June 27 -->
+    <div class="tour-card" data-type="upcoming" data-date="2026-06-27" data-lat="40.1053" data-lng="-85.6803">
 
-<!-- RIGHT SIDE -->
-  <div class="tour-list-column" id="tour">
-
-    <!-- FILTERS -->
-    <section class="tour-control-section compact-filter">
-
-      <div class="tour-filter-bar">
-
-        <div class="filter-group">
-
-          <button class="tour-btn active" data-filter="all">
-            <i class="fa-solid fa-layer-group"></i>
-            2026
-          </button>
-
-        </div>
-
-        <div class="sort-wrapper">
-
-          <label for="sortSelect">Sort</label>
-
-          <select id="sortSelect">
-            <option value="soonest">Soonest First</option>
-            <option value="latest">Latest First</option>
-          </select>
-
-        </div>
-
+      <div class="tour-date upcoming">
+        <span>JUN</span>
+        <strong>27</strong>
       </div>
 
-    </section>
-
-    <!-- TOUR GRID -->
-    <section class="tour-grid" id="tourGrid">
-      <!-- SEPTEMBER 25 -->
-      <div class="tour-card" data-type="upcoming" data-date="2026-09-25" data-lat="40.1053" data-lng="-85.6803">
-
-        <div class="tour-date upcoming">
-          <span>SEP</span>
-          <strong>25</strong>
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <span class="status-badge upcoming-badge">Upcoming</span>
+          <span class="tour-type">Fundraiser</span>
         </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <span class="status-badge upcoming-badge">Upcoming</span>
-            <span class="tour-type">Ballroom</span>
-          </div>
+        <h3>Puppy Party Fundraiser</h3>
 
-          <h3>The Paramount Centre & Ballroom</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Anderson, IN
-          </p>
-        </div>
-
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Crossville, TN
+        </p>
       </div>
 
-      <!-- SEPTEMBER 26 -->
-      <div class="tour-card" data-type="upcoming" data-date="2026-09-26" data-lat="40.7978" data-lng="-85.8205">
+    </div>
 
-        <div class="tour-date upcoming">
-          <span>SEP</span>
-          <strong>26</strong>
-        </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <span class="status-badge upcoming-badge">Upcoming</span>
-            <span class="tour-type">Theatre</span>
-          </div>
+    <!-- SEPTEMBER 25 -->
+    <div class="tour-card" data-type="upcoming" data-date="2026-09-25" data-lat="40.1053" data-lng="-85.6803">
 
-          <h3>The Honeywell Center</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Wabash, IN
-          </p>
-        </div>
-
-      </div>
-      
-      <!-- MARCH 6-7 -->
-      <div class="tour-card featured-card" data-type="past" data-date="2026-03-06" data-lat="36.1539" data-lng="-95.9928">
-
-        <div class="tour-date upcoming">
-          <span>MAR</span>
-          <strong>06</strong>
-        </div>
-
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Comedy Club</span>
-          </div>
-
-          <h3>Cozzy’s Comedy Club</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Tulsa, OK
-          </p>
-        </div>
-
+      <div class="tour-date upcoming">
+        <span>SEP</span>
+        <strong>25</strong>
       </div>
 
-      <!-- MARCH 13 -->
-      <div class="tour-card" data-type="past" data-date="2026-03-13" data-lat="38.5201" data-lng="-89.9839">
-
-        <div class="tour-date upcoming">
-          <span>MAR</span>
-          <strong>13</strong>
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <span class="status-badge upcoming-badge">Upcoming</span>
+          <span class="tour-type">Ballroom</span>
         </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Theatre</span>
-          </div>
+        <h3>The Paramount Centre & Ballroom</h3>
 
-          <h3>The Lincoln Theatre</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Belleville, IL
-          </p>
-        </div>
-
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Anderson, IN
+        </p>
       </div>
 
-      <!-- MARCH 14 -->
-      <div class="tour-card" data-type="past" data-date="2026-03-14" data-lat="39.8403" data-lng="-88.9548">
+    </div>
 
-        <div class="tour-date upcoming">
-          <span>MAR</span>
-          <strong>14</strong>
-        </div>
+    <!-- SEPTEMBER 26 -->
+    <div class="tour-card" data-type="upcoming" data-date="2026-09-26" data-lat="40.7978" data-lng="-85.8205">
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Theatre</span>
-          </div>
-
-          <h3>The Lincoln Town Theatre</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Decatur, IL
-          </p>
-        </div>
-
+      <div class="tour-date upcoming">
+        <span>SEP</span>
+        <strong>26</strong>
       </div>
 
-      <!-- MARCH 20 -->
-      <div class="tour-card" data-type="past" data-date="2026-03-20" data-lat="35.7915" data-lng="-78.7811">
-
-        <div class="tour-date upcoming">
-          <span>MAR</span>
-          <strong>20</strong>
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <span class="status-badge upcoming-badge">Upcoming</span>
+          <span class="tour-type">Theatre</span>
         </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Theatre</span>
-          </div>
+        <h3>The Honeywell Center</h3>
 
-          <h3>The Cary Theatre</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Cary, NC
-          </p>
-        </div>
-
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Wabash, IN
+        </p>
       </div>
 
-      <!-- MARCH 27 -->
-      <div class="tour-card" data-type="past" data-date="2026-03-27" data-lat="43.4195" data-lng="-83.9508">
+    </div>
 
-        <div class="tour-date upcoming">
-          <span>MAR</span>
-          <strong>27</strong>
-        </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Ballroom</span>
-          </div>
+        <!-- October 16 -->
+    <div class="tour-card" data-type="upcoming" data-date="2026-10-16" data-lat="40.7978" data-lng="-85.8205">
 
-          <h3>Gold Glow Ballroom</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Saginaw, MI
-          </p>
-        </div>
-
+      <div class="tour-date upcoming">
+        <span>OCT</span>
+        <strong>16</strong>
       </div>
 
-      <!-- MARCH 28 -->
-      <div class="tour-card" data-type="past" data-date="2026-03-28" data-lat="42.3086" data-lng="-83.4822">
-
-        <div class="tour-date upcoming">
-          <span>MAR</span>
-          <strong>28</strong>
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <span class="status-badge upcoming-badge">Upcoming</span>
+          <span class="tour-type">Festival</span>
         </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Theatre</span>
-          </div>
+        <h3>Kentucky Comedy Festival</h3>
 
-          <h3>The Village Theatre</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Canton, MI
-          </p>
-        </div>
-
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Wabash, IN
+        </p>
       </div>
 
-      <!-- APRIL 10 -->
-      <div class="tour-card" data-type="past" data-date="2026-04-10" data-lat="32.3526" data-lng="-90.8779">
+    </div>
 
-        <div class="tour-date upcoming">
-          <span>APR</span>
-          <strong>10</strong>
-        </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Casino</span>
-          </div>
 
-          <h3>The Ameristar Casino</h3>
+    <!-- MARCH 6-7 -->
+    <div class="tour-card featured-card" data-type="past" data-date="2026-03-06" data-lat="36.1539" data-lng="-95.9928">
 
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Vicksburg, MS
-          </p>
-        </div>
-
+      <div class="tour-date upcoming">
+        <span>MAR</span>
+        <strong>06</strong>
       </div>
 
-      <!-- MAY 16 -->
-      <div class="tour-card" data-type="past" data-date="2026-05-16" data-lat="27.7128" data-lng="-82.2987">
-
-        <div class="tour-date upcoming">
-          <span>MAY</span>
-          <strong>16</strong>
-        </div>
-
-        <div class="tour-info">
-          <div class="tour-status-row">
+      <div class="tour-info">
+        <div class="tour-status-row">
           <a class="ticket-btn disabled">Completed</a>
-            <span class="tour-type">Live Event</span>
-          </div>
-
-          <h3>Valencia Lakes</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Wimauma, FL
-          </p>
+          <span class="tour-type">Comedy Club</span>
         </div>
 
+        <h3>Cozzy’s Comedy Club</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Tulsa, OK
+        </p>
       </div>
 
-      <!-- MAY 22 -->
-      <div class="tour-card" data-type="upcoming" data-date="2026-05-22" data-lat="41.0814" data-lng="-81.5190">
+    </div>
 
-        <div class="tour-date upcoming">
-          <span>MAY</span>
-          <strong>22</strong>
-        </div>
+    <!-- MARCH 13 -->
+    <div class="tour-card" data-type="past" data-date="2026-03-13" data-lat="38.5201" data-lng="-89.9839">
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <span class="ticket-btn disabled">Completed</span>
-            <span class="tour-type">Theatre</span>
-          </div>
-
-          <h3>The Goodyear Theatre</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Akron, OH
-          </p>
-        </div>
-
+      <div class="tour-date upcoming">
+        <span>MAR</span>
+        <strong>13</strong>
       </div>
 
-      <!-- MAY 23 -->
-      <div class="tour-card" data-type="past" data-date="2026-05-23" data-lat="41.6728" data-lng="-85.5800">
-
-        <div class="tour-date upcoming">
-          <span>MAY</span>
-          <strong>23</strong>
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Theatre</span>
         </div>
 
-        <div class="tour-info">
-          <div class="tour-status-row">
-            <span class="ticket-btn disabled">Completed</span>
-            <span class="tour-type">Theatre</span>
-          </div>
+        <h3>The Lincoln Theatre</h3>
 
-          <h3>The Blue Gate Theatre</h3>
-
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            Shipshewana, IN
-          </p>
-        </div>
-
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Belleville, IL
+        </p>
       </div>
 
+    </div>
 
+    <!-- MARCH 14 -->
+    <div class="tour-card" data-type="past" data-date="2026-03-14" data-lat="39.8403" data-lng="-88.9548">
 
-    </section>
+      <div class="tour-date upcoming">
+        <span>MAR</span>
+        <strong>14</strong>
+      </div>
 
-  </div>
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Theatre</span>
+        </div>
+
+        <h3>The Lincoln Town Theatre</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Decatur, IL
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MARCH 20 -->
+    <div class="tour-card" data-type="past" data-date="2026-03-20" data-lat="35.7915" data-lng="-78.7811">
+
+      <div class="tour-date upcoming">
+        <span>MAR</span>
+        <strong>20</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Theatre</span>
+        </div>
+
+        <h3>The Cary Theatre</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Cary, NC
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MARCH 27 -->
+    <div class="tour-card" data-type="past" data-date="2026-03-27" data-lat="43.4195" data-lng="-83.9508">
+
+      <div class="tour-date upcoming">
+        <span>MAR</span>
+        <strong>27</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Ballroom</span>
+        </div>
+
+        <h3>Gold Glow Ballroom</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Saginaw, MI
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MARCH 28 -->
+    <div class="tour-card" data-type="past" data-date="2026-03-28" data-lat="42.3086" data-lng="-83.4822">
+
+      <div class="tour-date upcoming">
+        <span>MAR</span>
+        <strong>28</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Theatre</span>
+        </div>
+
+        <h3>The Village Theatre</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Canton, MI
+        </p>
+      </div>
+
+    </div>
+
+    <!-- APRIL 10 -->
+    <div class="tour-card" data-type="past" data-date="2026-04-10" data-lat="32.3526" data-lng="-90.8779">
+
+      <div class="tour-date upcoming">
+        <span>APR</span>
+        <strong>10</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Casino</span>
+        </div>
+
+        <h3>The Ameristar Casino</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Vicksburg, MS
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MAY 16 -->
+    <div class="tour-card" data-type="past" data-date="2026-05-16" data-lat="27.7128" data-lng="-82.2987">
+
+      <div class="tour-date upcoming">
+        <span>MAY</span>
+        <strong>16</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <a class="ticket-btn disabled">Completed</a>
+          <span class="tour-type">Live Event</span>
+        </div>
+
+        <h3>Valencia Lakes</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Wimauma, FL
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MAY 22 -->
+    <div class="tour-card" data-type="upcoming" data-date="2026-05-22" data-lat="41.0814" data-lng="-81.5190">
+
+      <div class="tour-date upcoming">
+        <span>MAY</span>
+        <strong>22</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <span class="ticket-btn disabled">Completed</span>
+          <span class="tour-type">Theatre</span>
+        </div>
+
+        <h3>The Goodyear Theatre</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Akron, OH
+        </p>
+      </div>
+
+    </div>
+
+    <!-- MAY 23 -->
+    <div class="tour-card" data-type="past" data-date="2026-05-23" data-lat="41.6728" data-lng="-85.5800">
+
+      <div class="tour-date upcoming">
+        <span>MAY</span>
+        <strong>23</strong>
+      </div>
+
+      <div class="tour-info">
+        <div class="tour-status-row">
+          <span class="ticket-btn disabled">Completed</span>
+          <span class="tour-type">Theatre</span>
+        </div>
+
+        <h3>The Blue Gate Theatre</h3>
+
+        <p>
+          <i class="fa-solid fa-location-dot"></i>
+          Shipshewana, IN
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
 
 </section>
 
 <!-- PROMOTIONS SECTION -->
 <section class="promotions-section">
 
-  <!-- Smoky Mountain + September Tour -->
   <div class="promo-strip-section">
 
-    <div class="promo-card promo-card-left">
-      <img src="assets/images/smoky-mountain-fan-fest.png" alt="Smoky Mountain Fan Fest 2026">
+    <div class="coming-soon-promo-section">
+      <div class="coming-soon-promo-card">
+        <img src="assets/images/smokey-mountain-promo.jpg" alt="Coming soon show announcement">
+      </div>
     </div>
-
-    <div class="promo-card promo-card-right">
-      <img src="assets/images/september-tour.png" alt="September Tour 2026">
-    </div>
-
-      <div class="coming-soon-promo-section">
-    <div class="coming-soon-promo-card">
-      <img src="assets/images/clubshowimg-4.jpg" alt="Coming soon show announcement">
-      <div class="coming-soon-badge">TBA</div>
-    </div>
-  </div>
 
   </div>
 
-
+</section>
 
 <main class="gallery-page">
 
   <section class="gallery-page-grid" id="gallery">
 
     <!-- CLUB -->
+
+    <article class="gallery-page-card" data-category="club">
+      <img src="assets/images/clubshowimg-4.jpg" alt="">
+
+    </article>
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-1.jpg" alt="">
-      <div><span>Club Comedy</span></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/huckabeeimg-1.jpg" alt="">
-      <div><span>Club Comedy</span></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-2.jpg" alt="">
-      <div><span>Club Comedy</span><p>Comedy Cabana</p></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-3.jpg" alt="">
-      <div><span>Club Comedy</span></div>
-    </article>
 
-    <article class="gallery-page-card" data-category="club">
-      <img src="assets/images/clubshowimg-4.jpg" alt="">
-      <div><span>Club Comedy</span><p>Amazon Prime TV Taping</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-5.jpg" alt="">
-      <div><span>Club Comedy</span><p>Amazon Prime TV Taping</p></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-6.jpg" alt="">
-      <div><span>Club Comedy</span><p>Amazon Prime TV Taping</p></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-7.jpg" alt="">
-      <div><span>Club Comedy</span></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="club">
       <img src="assets/images/clubshowimg-8.jpg" alt="">
-      <div><span>Club Comedy</span></div>
+
     </article>
 
     <!-- THEATER -->
+
+    <article class="gallery-page-card" data-category="theater">
+      <img src="assets/images/cruiseshowimg-3.jpeg" alt="">
+
+    </article>
+
     <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-6.jpg" alt="">
-      <div><span>Theater</span><p>"Southern Fried Chicks" Tour</p></div>
+
     </article>
 
     <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-7.jpg" alt="">
-      <div><span>Theater</span><p>Southern Fried Chicks" Tour</p></div>
     </article>
 
-        <article class="gallery-page-card" data-category="theater">
+    <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-8.jpg" alt="">
-      <div><span>Theater</span><p>Southern Fried Chicks" Tour</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-4.jpg" alt="">
-      <div><span>Theater</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-2.JPG" alt="">
-      <div><span>Theater</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="theater">
-      <img src="assets/images/theaterimg-3.jpeg" alt="">
-      <div><span>Theater</span></div>
-    </article>
-
-    <article class="gallery-page-card" data-category="theater">
-      <img src="assets/images/cruiseshowimg-3.jpeg" alt="">
-      <div><span>Theater</span></div>
+      <img src="assets/images/theaterimg-6.jpg" alt="">
     </article>
 
     <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-1.JPG" alt="">
-      <div><span>Theater</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-5.jpg" alt="">
-      <div><span>Theater</span></div>
     </article>
 
-        <article class="gallery-page-card" data-category="theater">
+    <article class="gallery-page-card" data-category="theater">
       <img src="assets/images/theaterimg-9.jpg" alt="">
-      <div><span>Theater</span><p>Sonya White's Smokin' Hot Crowd</p></div>
+    </article>
+
+    <article class="gallery-page-card" data-category="theater">
+      <img src="assets/images/theaterimg-10.jpg" alt="">
+    </article>
+
+    <article class="gallery-page-card" data-category="theater">
+      <img src="assets/images/theaterimg-11.jpg" alt="">
+    </article>
+
+    <article class="gallery-page-card" data-category="theater">
+      <img src="assets/images/theaterimg-12.jpg" alt="">
     </article>
 
     <!-- CORPORATE -->
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-1.jpg" alt="">
-      <div><span>Corporate Event</span><p>Breast Cancer Awareness Event</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-3.jpg" alt="">
-      <div><span>Corporate Event</span><p>Breast Cancer Awareness Event</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-4.png" alt="">
-      <div><span>Corporate Event</span><p>Breast Cancer Awareness Event</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-2.jpg" alt="">
-      <div><span>Corporate Event</span><p>Breast Cancer Awareness Event</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-5.png" alt="">
-      <div><span>Corporate Event</span><p>American Heart Association "Heart Walk" Fundraiser.</p></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-6.jpg" alt="">
-      <div><span>Corporate Event</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-7.jpg" alt="">
-      <div><span>Corporate Event</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="corporate">
       <img src="assets/images/corporateimg-8.png" alt="">
-      <div><span>Corporate Event</span><p>FFA "Future Farmers of America"</p></div>
     </article>
 
     <!-- CLEAN COMEDY -->
     <article class="gallery-page-card" data-category="cleancomedy">
       <img src="assets/images/cruiseshowimg-2.jpg" alt="">
-      <div><span>Clean Comedy</span></div>
     </article>
 
     <!-- FESTIVALS -->
     <article class="gallery-page-card" data-category="festivals">
       <img src="assets/images/festivalimg-1.jpg" alt="">
-      <div><span>Festivals</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="festivals">
       <img src="assets/images/festivalimg-2.jpg" alt="">
-      <div><span>Festivals</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="festivals">
       <img src="assets/images/festivalimg-3.jpg" alt="">
-      <div><span>Festivals</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="festivals">
       <img src="assets/images/festivalimg-4.jpg" alt="">
-      <div><span>Festivals</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="festivals">
       <img src="assets/images/festivalimg-5.jpg" alt="">
-      <div><span>Festivals</span></div>
     </article>
 
     <!-- TV -->
     <article class="gallery-page-card" data-category="tv">
       <img src="assets/images/tvimg-1.jpg" alt="">
-      <div><span>TV</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="tv">
       <img src="assets/images/tvimg-2.jpg" alt="">
-      <div><span>TV</span></div>
     </article>
 
     <!-- RADIO -->
     <article class="gallery-page-card" data-category="radio">
       <img src="assets/images/radioimg-1.jpg" alt="">
-      <div><span>Radio</span></div>
     </article>
 
     <article class="gallery-page-card" data-category="radio">
       <img src="assets/images/radioimg-2.jpg" alt="">
-      <div><span>Radio</span></div>
     </article>
 
   </section>
@@ -1830,55 +2384,53 @@ document.addEventListener("DOMContentLoaded", () => {
   <img id="galleryPageLightboxImg" src="" alt="">
 </div>
 
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const filters = document.querySelectorAll(".gallery-page-filter");
-  const cards = document.querySelectorAll(".gallery-page-card");
+  document.addEventListener("DOMContentLoaded", () => {
+    const filters = document.querySelectorAll(".gallery-page-filter");
+    const cards = document.querySelectorAll(".gallery-page-card");
 
-  filters.forEach(filter => {
-    filter.addEventListener("click", () => {
-      filters.forEach(btn => btn.classList.remove("active"));
-      filter.classList.add("active");
+    filters.forEach(filter => {
+      filter.addEventListener("click", () => {
+        filters.forEach(btn => btn.classList.remove("active"));
+        filter.classList.add("active");
 
-      const category = filter.dataset.filter;
+        const category = filter.dataset.filter;
 
-      cards.forEach(card => {
-        if (category === "all" || card.dataset.category === category) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
+        cards.forEach(card => {
+          if (category === "all" || card.dataset.category === category) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
       });
     });
-  });
 
-  const lightbox = document.getElementById("galleryPageLightbox");
-  const lightboxImg = document.getElementById("galleryPageLightboxImg");
-  const closeBtn = document.getElementById("galleryPageClose");
+    const lightbox = document.getElementById("galleryPageLightbox");
+    const lightboxImg = document.getElementById("galleryPageLightboxImg");
+    const closeBtn = document.getElementById("galleryPageClose");
 
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      const img = card.querySelector("img");
-      lightboxImg.src = img.src;
-      lightbox.classList.add("active");
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        lightboxImg.src = img.src;
+        lightbox.classList.add("active");
+      });
     });
-  });
 
-  closeBtn.addEventListener("click", () => {
-    lightbox.classList.remove("active");
-    lightboxImg.src = "";
-  });
-
-  lightbox.addEventListener("click", e => {
-    if (e.target === lightbox) {
+    closeBtn.addEventListener("click", () => {
       lightbox.classList.remove("active");
       lightboxImg.src = "";
-    }
-  });
-});
-</script>
+    });
 
+    lightbox.addEventListener("click", e => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("active");
+        lightboxImg.src = "";
+      }
+    });
+  });
+</script>
 
 <section class="videos-showcase-pro">
 
@@ -1900,6 +2452,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="bubble" data-filter="tv"><span>TV</span></div>
     <div class="bubble" data-filter="interviews"><span>Interviews</span></div>
     <div class="bubble" data-filter="theater"><span>Theater</span></div>
+    <div class="bubble" data-filter="clubhousecomedy"><span>Clubhouse Comedy</span></div>
   </div>
 
   <div class="showcase-modal-grid">
@@ -1931,46 +2484,40 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/lwRLIElT_7c">
       <img src="https://img.youtube.com/vi/lwRLIElT_7c/maxresdefault.jpg" alt="">
       <div class="play-btn">▶</div>
-      <h3>CMT</h3>
+      <h3>CMT: Girls on a Harley Davidson</h3>
     </div>
 
-    <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/u9t5W5OBsYA">
-      <img src="https://img.youtube.com/vi/u9t5W5OBsYA/maxresdefault.jpg" alt="">
+    <div class="video-card video-trigger" data-category="tv" data-video="https://www.youtube.com/embed/lwRLIElT_7c">
+      <img src="https://img.youtube.com/vi/lwRLIElT_7c/maxresdefault.jpg" alt="">
       <div class="play-btn">▶</div>
-      <h3>Sonya White on Great Day KCWI 23</h3>
+      <h3>CMT: Bar People</h3>
     </div>
 
-    <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/-XLvgJaEZmE">
-      <img src="/assets/images/pbs-thumbnail.PNG" alt="">
+    <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/5Bw11r69LeA">
+      <img src="https://img.youtube.com/vi/5Bw11r69LeA/maxresdefault.jpg" alt="">
       <div class="play-btn">▶</div>
-      <h3>Interview on PBS</h3>
+      <h3>Stand Up Nashville!</h3>
     </div>
 
-    <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/MonLS9dA2v4">
-      <img src="https://img.youtube.com/vi/MonLS9dA2v4/maxresdefault.jpg" alt="">
+    <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/38_9_yxpTTw">
+      <img src="https://img.youtube.com/vi/38_9_yxpTTw/maxresdefault.jpg" alt="">
       <div class="play-btn">▶</div>
-      <h3>Country Roots and Younger Dudes - Stand Up Nashville!</h3>
+      <h3>Stand Up Nashville! #2</h3>
     </div>
 
-    <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/0jo6_Dj5cGw">
-      <img src="https://img.youtube.com/vi/0jo6_Dj5cGw/maxresdefault.jpg" alt="">
+    <div class="video-card video-trigger" data-category="interviews" data-video="https://www.youtube.com/embed/frgg4dADPk8">
+      <img src="https://img.youtube.com/vi/frgg4dADPk8/maxresdefault.jpg" alt="">
       <div class="play-btn">▶</div>
-      <h3>Why I Do Comedy - Stand Up Nashville!</h3>
+      <h3>Stand Up Nashville! #3</h3>
     </div>
 
-    <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/0XoFwmWY7VI">
-      <img src="https://img.youtube.com/vi/0XoFwmWY7VI/hqdefault.jpg" alt="">
-      <div class="play-btn">▶</div>
-      <h3>Crazy Talk</h3>
-    </div>
-<!--    
+    <!--
     <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/AZ2bpkdRlVE">
-      <img src="https://img.youtube.com/vi/AZ2bpkdRlVE/hqdefault.jpg" alt="">
-      <div class="play-btn">▶</div>
-      <h3>Sonya White Patsy Cline Working for Verizon</h3>
+    <img src="https://img.youtube.com/vi/AZ2bpkdRlVE/hqdefault.jpg" alt="">
+    <div class="play-btn">▶</div>
+    <h3>Sonya White Patsy Cline Working for Verizon</h3>
     </div>
     -->
-
 
     <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/pjoB0GNhfsc">
       <img src="https://img.youtube.com/vi/pjoB0GNhfsc/hqdefault.jpg" alt="">
@@ -1978,10 +2525,28 @@ document.addEventListener("DOMContentLoaded", () => {
       <h3>Sonya White on Girls Getting Buzzed</h3>
     </div>
 
-        <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/B5bcTieHwVU">
+    <div class="video-card video-trigger" data-category="theater" data-video="https://www.youtube.com/embed/B5bcTieHwVU">
       <img src="https://img.youtube.com/vi/B5bcTieHwVU/hqdefault.jpg" alt="">
       <div class="play-btn">▶</div>
       <h3>Sonya White's Smokin' Hot Crowd</h3>
+    </div>
+
+    <div class="video-card video-trigger" data-category="clubhousecomedy" data-video="https://www.youtube.com/embed/HWKUSfwTfYQ">
+      <img src="https://img.youtube.com/vi/HWKUSfwTfYQ/hqdefault.jpg" alt="">
+      <div class="play-btn">▶</div>
+      <h3>Laughter in Paradise - Benefits of Living in a Gated Community</h3>
+    </div>
+
+    <div class="video-card video-trigger" data-category="clubhousecomedy" data-video="https://www.youtube.com/embed/Bocpn-yevFc">
+      <img src="https://img.youtube.com/vi/Bocpn-yevFc/hqdefault.jpg" alt="">
+      <div class="play-btn">▶</div>
+      <h3>Laughter in Paradise - The Fear of Having Kids</h3>
+    </div>
+
+    <div class="video-card video-trigger" data-category="clubhousecomedy" data-video="https://www.youtube.com/embed/K0302F7mzZM">
+      <img src="https://img.youtube.com/vi/K0302F7mzZM/hqdefault.jpg" alt="">
+      <div class="play-btn">▶</div>
+      <h3>Laughter in Paradise - Puppy Love Gone Bad</h3>
     </div>
 
   </div>
@@ -1996,62 +2561,62 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const filterButtons = document.querySelectorAll(".bubble");
-  const videoCards = document.querySelectorAll(".video-card");
-  const modal = document.getElementById("videoModal");
-  const modalVideo = document.getElementById("modalVideo");
-  const closeModal = document.querySelector(".close-modal");
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll(".bubble");
+    const videoCards = document.querySelectorAll(".video-card");
+    const modal = document.getElementById("videoModal");
+    const modalVideo = document.getElementById("modalVideo");
+    const closeModal = document.querySelector(".close-modal");
 
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
 
-      filterButtons.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
 
-      videoCards.forEach(card => {
-        card.style.display =
+        videoCards.forEach(card => {
+          card.style.display =
           filter === "all" || card.dataset.category === filter
-            ? "block"
-            : "none";
+          ? "block"
+          : "none";
+        });
       });
     });
-  });
 
-  function openVideo(videoURL) {
-    modalVideo.src = videoURL.includes("?")
+    function openVideo(videoURL) {
+      modalVideo.src = videoURL.includes("?")
       ? videoURL + "&autoplay=1"
       : videoURL + "?autoplay=1";
 
-    modal.classList.add("active");
-    modal.style.display = "flex";
-  }
-
-  function closeVideo() {
-    modal.classList.remove("active");
-    modal.style.display = "none";
-    modalVideo.src = "about:blank";
-  }
-
-  document.addEventListener("click", e => {
-    const card = e.target.closest(".video-trigger");
-
-    if (card) {
-      openVideo(card.dataset.video);
+      modal.classList.add("active");
+      modal.style.display = "flex";
     }
 
-    if (e.target === closeModal || e.target === modal) {
-      closeVideo();
+    function closeVideo() {
+      modal.classList.remove("active");
+      modal.style.display = "none";
+      modalVideo.src = "about:blank";
     }
+
+    document.addEventListener("click", e => {
+      const card = e.target.closest(".video-trigger");
+
+      if (card) {
+        openVideo(card.dataset.video);
+      }
+
+      if (e.target === closeModal || e.target === modal) {
+        closeVideo();
+      }
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        closeVideo();
+      }
+    });
   });
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      closeVideo();
-    }
-  });
-});
 </script>
 
 <!--Testimonials Section-->
@@ -2120,19 +2685,6 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <section class="socials-feed-section" id="contact">
 
   <div class="social-feed-bg"></div>
@@ -2178,419 +2730,427 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="social-card-body">
           <div class="fb-page"
-               data-href="https://www.facebook.com/114646248656197?ref=embed_page"
-               data-tabs="timeline"
-               data-width="500"
-               data-height="700"
-               data-small-header="false"
-               data-adapt-container-width="true"
-               data-hide-cover="false"
-               data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/114646248656197?ref=embed_page"
-              class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/114646248656197?ref=embed_page">Sonya White</a>
-            </blockquote>
-          </div>
-        </div>
-
-        <a href="https://www.facebook.com/people/Sonya-White-Comedy/100063653014055/?ref=embed_page#"
-           target="_blank"
-           class="instagram-open-btn facebook-open-btn">
-          View Facebook
-          <i class="fab fa-facebook-f"></i>
-        </a>
+          data-href="https://www.facebook.com/114646248656197?ref=embed_page"
+          data-tabs="timeline"
+          data-width="500"
+          data-height="700"
+          data-small-header="false"
+          data-adapt-container-width="true"
+          data-hide-cover="false"
+          data-show-facepile="true">
+          <blockquote cite="https://www.facebook.com/114646248656197?ref=embed_page"
+          class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/114646248656197?ref=embed_page">Sonya White</a>
+        </blockquote>
       </div>
     </div>
 
-    <!-- INSTAGRAM -->
-    <div class="social-feed-panel" id="instagramPanel">
-      <div class="social-feed-card instagram-card">
+    <a href="https://www.facebook.com/people/Sonya-White-Comedy/100063653014055/?ref=embed_page#"
+    target="_blank"
+    class="instagram-open-btn facebook-open-btn">
+    View Facebook
+    <i class="fab fa-facebook-f"></i>
+  </a>
+</div>
+</div>
 
-        <div class="social-card-header">
-          <i class="fab fa-instagram"></i>
-          <div>
-            <h3>Sonya White on Instagram</h3>
-            <p>Photos, clips, and show highlights</p>
-          </div>
-        </div>
+<!-- INSTAGRAM -->
+<div class="social-feed-panel" id="instagramPanel">
+  <div class="social-feed-card instagram-card">
 
-        <div class="social-card-body instagram-preview-body">
-
-          <div class="instagram-profile-preview">
-
-            <div class="ig-profile-top">
-              <img src="assets/images/sonya-headshot.jpg" alt="Sonya White">
-              <div>
-                <h4>@sonyawhitecomedy</h4>
-                <p>Comedian • Storyteller • Clean Comedy</p>
-              </div>
-            </div>
-
-            <div class="ig-stats-row">
-              <span><strong>Posts</strong> Highlights</span>
-            </div>
-
-            <div class="ig-photo-grid">
-
-              <a href="https://www.instagram.com/p/DGQqwvMgObv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-                <img src="assets/images/instapost-1.PNG" alt="">
-              </a>
-
-              <a href="https://www.instagram.com/p/DGA2Q8oAgFE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-                <img src="assets/images/instapost-2.PNG" alt="">
-              </a>
-
-              <a href="https://www.instagram.com/p/C_dUf5IACkZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-                <img src="assets/images/instapost-3.PNG" alt="">
-              </a>
-
-              <a href="https://www.instagram.com/reel/C5bRpNHOt8N/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-                <img src="assets/images/instapost-4.PNG" alt="">
-              </a>
-
-              <a href="https://www.instagram.com/p/C2Ii5Z4Af08/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-                <img src="assets/images/instapost-5.PNG" alt="">
-              </a>
-
-              <a href="https://www.instagram.com/p/C1iX6W0AMhZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
-                <img src="assets/images/instapost-6.png" alt="">
-              </a>
-
-            </div>
-
-            <a href="https://www.instagram.com/sonyawhitecomedy/" target="_blank" class="instagram-open-btn">
-              View Full Instagram
-              <i class="fab fa-instagram"></i>
-            </a>
-
-          </div>
-
-        </div>
-
+    <div class="social-card-header">
+      <i class="fab fa-instagram"></i>
+      <div>
+        <h3>Sonya White on Instagram</h3>
+        <p>Photos, clips, and show highlights</p>
       </div>
     </div>
 
-    <!-- TIKTOK -->
-    <div class="social-feed-panel" id="tiktokPanel">
-      <div class="social-feed-card tiktok-card">
-        <div class="social-card-header">
-          <i class="fab fa-tiktok"></i>
+    <div class="social-card-body instagram-preview-body">
+
+      <div class="instagram-profile-preview">
+
+        <div class="ig-profile-top">
+          <img src="assets/images/sonya-headshot.jpg" alt="Sonya White">
           <div>
-            <h3>Sonya White on TikTok</h3>
-            <p>Short clips and comedy moments</p>
+            <h4>@sonyawhitecomedy</h4>
+            <p>Comedian • Storyteller • Clean Comedy</p>
           </div>
         </div>
 
-        <div class="social-card-body social-placeholder">
-          <i class="fab fa-tiktok"></i>
-          <h4>TikTok Profile Feed</h4>
+        <div class="ig-stats-row">
+          <span><strong>Posts</strong> Highlights</span>
+        </div>
 
-          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@tiktok" data-unique-id="tiktok" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
-            <section>
-              <a target="_blank" href="https://www.tiktok.com/@tiktok?refer=creator_embed">@tiktok</a>
-            </section>
-          </blockquote>
-          <script async src="https://www.tiktok.com/embed.js"></script>
+        <div class="ig-photo-grid">
 
-          <a href="https://www.tiktok.com" target="_blank">
-            Open TikTok
+          <a href="https://www.instagram.com/p/DGQqwvMgObv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="assets/images/instapost-1.PNG" alt="">
           </a>
+
+          <a href="https://www.instagram.com/p/DGA2Q8oAgFE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="assets/images/instapost-2.PNG" alt="">
+          </a>
+
+          <a href="https://www.instagram.com/p/C_dUf5IACkZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="assets/images/instapost-3.PNG" alt="">
+          </a>
+
+          <a href="https://www.instagram.com/reel/C5bRpNHOt8N/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="assets/images/instapost-4.PNG" alt="">
+          </a>
+
+          <a href="https://www.instagram.com/p/C2Ii5Z4Af08/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="assets/images/instapost-5.PNG" alt="">
+          </a>
+
+          <a href="https://www.instagram.com/p/C1iX6W0AMhZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">
+            <img src="assets/images/instapost-6.png" alt="">
+          </a>
+
         </div>
+
+        <a href="https://www.instagram.com/sonyawhitecomedy/" target="_blank" class="instagram-open-btn">
+          View Full Instagram
+          <i class="fab fa-instagram"></i>
+        </a>
+
       </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TIKTOK -->
+<div class="social-feed-panel" id="tiktokPanel">
+  <div class="social-feed-card tiktok-card">
+    <div class="social-card-header">
+      <i class="fab fa-tiktok"></i>
+      <div>
+        <h3>Sonya White on TikTok</h3>
+        <p>Short clips and comedy moments</p>
+      </div>
+    </div>
+
+    <div class="social-card-body social-placeholder">
+      <i class="fab fa-tiktok"></i>
+      <h4>TikTok Profile Feed</h4>
+
+      <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@sonyacentral"
+      data-unique-id="sonyacentral"
+      data-embed-type="creator"
+      style="max-width: 780px; min-width: 288px;">
+      <section>
+        <a target="_blank"
+        href="https://www.tiktok.com/@sonyacentral?refer=creator_embed">
+        @sonyacentral
+      </a>
+    </section>
+  </blockquote>
+  <script async src="https://www.tiktok.com/embed.js"></script>
+
+    <a href="https://www.tiktok.com/@sonyacentral" target="_blank">
+    Open TikTok
+    </a>
+    </div>
+    </div>
     </div>
 
     <div class="contact-card">
 
-  <div class="form-header">
+    <div class="form-header">
     <span>Contact Sonya Today</span>
 
     <h2>Send a Message</h2>
 
     <p>
-      Looking to book a show, request information,
-      or ask a question? I'd love to hear from you.
+    Looking to book a show, request information,
+    or ask a question? I'd love to hear from you.
     </p>
-  </div>
+    </div>
 
-  <form id="contactForm">
+    <form id="contactForm">
 
     <div class="form-row">
 
-      <div class="input-group">
-        <label>Full Name</label>
-        <input type="text" name="name" placeholder="Your full name" required>
-      </div>
+    <div class="input-group">
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="Your full name" required>
+    </div>
 
-      <div class="input-group">
-        <label>Email Address</label>
-        <input type="email" name="email" placeholder="you@example.com" required>
-      </div>
+    <div class="input-group">
+    <label>Email Address</label>
+    <input type="email" name="email" placeholder="you@example.com" required>
+    </div>
 
     </div>
 
     <div class="form-group">
 
-      <label>Reason for Contact</label>
+    <label>Reason for Contact</label>
 
-      <div class="radio-group">
+    <div class="radio-group">
 
-        <label class="radio-option">
-          <input type="radio" name="topic" value="Booking" required>
-          <span>Booking</span>
-        </label>
+    <label class="radio-option">
+    <input type="radio" name="topic" value="Booking" required>
+    <span>Booking</span>
+    </label>
 
-        <label class="radio-option">
-          <input type="radio" name="topic" value="Media">
-          <span>Media</span>
-        </label>
+    <label class="radio-option">
+    <input type="radio" name="topic" value="Media">
+    <span>Media</span>
+    </label>
 
-        <label class="radio-option">
-          <input type="radio" name="topic" value="Question">
-          <span>Question</span>
-        </label>
+    <label class="radio-option">
+    <input type="radio" name="topic" value="Question">
+    <span>Question</span>
+    </label>
 
-        <label class="radio-option">
-          <input type="radio" name="topic" value="Other">
-          <span>Other</span>
-        </label>
+    <label class="radio-option">
+    <input type="radio" name="topic" value="Other">
+    <span>Other</span>
+    </label>
 
-      </div>
+    </div>
 
     </div>
 
     <div class="input-group">
-      <label>Message</label>
+    <label>Message</label>
 
-      <textarea
-        name="message"
-        placeholder="Tell me about your event, request, or question..."
-        required></textarea>
+    <textarea
+    name="message"
+    placeholder="Tell me about your event, request, or question..."
+    required></textarea>
     </div>
 
     <button type="submit">
-      <span>Send Message</span>
-      <span>→</span>
+    <span>Send Message</span>
+    <span>→</span>
     </button>
 
     <p id="formStatus"></p>
 
-  </form>
+    </form>
 
-</div>
-  </div>
+    </div>
+    </div>
 
-</section>
+    </section>
 
+    <!-- =========================
+    FOOTER
+    ========================= -->
+    <footer class="site-footer">
 
-<!-- =========================
-     FOOTER
-========================= -->
-<footer class="site-footer">
+    <div class="footer-bg-grid"></div>
+    <div class="footer-orb footer-orb-one"></div>
+    <div class="footer-orb footer-orb-two"></div>
 
-  <div class="footer-bg-grid"></div>
-  <div class="footer-orb footer-orb-one"></div>
-  <div class="footer-orb footer-orb-two"></div>
-
-  <div class="footer-container">
+    <div class="footer-container">
 
     <!-- BRAND -->
     <div class="footer-brand">
-      <span class="footer-kicker">Southern Charm. Big City Street Smarts.</span>
+    <span class="footer-kicker">Southern Charm. Big City Street Smarts.</span>
 
-      <h3>Sonya White</h3>
+    <h3>Sonya White</h3>
 
-      <p>
-        Comedian, storyteller, and performer bringing clean comedy,
-        southern charm, and unforgettable laughs to stages across the country.
-      </p>
+    <p>
+    Comedian, storyteller, and performer bringing clean comedy,
+    southern charm, and unforgettable laughs to stages across the country.
+    </p>
 
     </div>
 
     <!-- LINKS -->
     <div class="footer-links">
 
-      <div class="footer-column">
-        <h4>Navigate</h4>
-        <a href="index.html">Home</a>
-        <a href="#bio">Bio</a>
-        <a href="#tour">Tour</a>
-      </div>
+    <div class="footer-column">
+    <h4>Navigate</h4>
+    <a href="index.html">Home</a>
+    <a href="#bio">Bio</a>
+    <a href="#tour">Tour</a>
+    </div>
 
-      <div class="footer-column">
-        <h4>Content</h4>
-        <a href="#gallery">Gallery</a>
-        <a href="#showcase">Showcase</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div class="footer-column">
+    <h4>Content</h4>
+    <a href="#gallery">Gallery</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#contact">Contact</a>
+    </div>
 
-      <div class="footer-column">
-        <h4>Social</h4>
-        <a href="https://facebook.com" target="_blank">Facebook</a>
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-        <a href="https://tiktok.com" target="_blank">TikTok</a>
-      </div>
+    <div class="footer-column">
+    <h4>Social</h4>
+    <a href="https://facebook.com" target="_blank">Facebook</a>
+    <a href="https://instagram.com" target="_blank">Instagram</a>
+    <a href="https://tiktok.com" target="_blank">TikTok</a>
+    </div>
 
     </div>
 
-  </div>
+    </div>
 
-  <div class="footer-logo-top">
+    <div class="footer-logo-top">
     <a href="#top">↑ Back to Top</a>
-  </div>
+    </div>
 
-  <div class="footer-bottom">
+    <div class="footer-bottom">
     <p>© 2026 Sonya White. All rights reserved.</p>
-  </div>
+    </div>
 
-</footer>
+    </footer>
 
-<!-- Facebook SDK -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" 
-  src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0" 
-  nonce="FBSDK">
-</script>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0"
+    nonce="FBSDK">
+  </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-  // FILTERING
-  const chips = document.querySelectorAll(".filter-chip");
-  const images = document.querySelectorAll(".gallery-img");
-  const rows = document.querySelectorAll(".gallery-row");
+      // FILTERING
+      const chips = document.querySelectorAll(".filter-chip");
+      const images = document.querySelectorAll(".gallery-img");
+      const rows = document.querySelectorAll(".gallery-row");
 
-  chips.forEach(chip => {
-    chip.addEventListener("click", () => {
+      chips.forEach(chip => {
+        chip.addEventListener("click", () => {
 
-      chips.forEach(c => c.classList.remove("active"));
-      chip.classList.add("active");
+          chips.forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
 
-      const filter = chip.dataset.filter;
+          const filter = chip.dataset.filter;
 
-      rows.forEach(row => {
-        if(filter === "all" || row.dataset.category === filter){
-          row.style.display = "block";
-        } else {
-          row.style.display = "none";
-        }
+          rows.forEach(row => {
+            if(filter === "all" || row.dataset.category === filter){
+              row.style.display = "block";
+            } else {
+              row.style.display = "none";
+            }
+          });
+
+        });
+      });
+
+      // LIGHTBOX
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+
+      images.forEach(img => {
+        img.addEventListener("click", () => {
+          lightbox.style.display = "flex";
+          lightboxImg.src = img.src;
+        });
+      });
+
+      lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
       });
 
     });
-  });
+  </script>
 
-  // LIGHTBOX
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
-    });
-  });
+      /* =========================
+      CATEGORY SWITCHING
+      ========================= */
 
-  lightbox.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
+      const logos = document.querySelectorAll(".filter-logo");
+      const rails = document.querySelectorAll(".gallery-rail");
 
-});
-</script>
+      logos.forEach(logo => {
+        logo.addEventListener("click", () => {
 
+          logos.forEach(l => l.classList.remove("active"));
+          logo.classList.add("active");
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+          const filter = logo.dataset.filter;
 
-  /* =========================
-     CATEGORY SWITCHING
-  ========================= */
+          rails.forEach(rail => {
+            if(rail.dataset.category === filter){
+              rail.style.display = "block";
+              rail.style.animation = "fadeInUp 0.4s ease";
+            } else {
+              rail.style.display = "none";
+            }
+          });
 
-  const logos = document.querySelectorAll(".filter-logo");
-  const rails = document.querySelectorAll(".gallery-rail");
-
-  logos.forEach(logo => {
-    logo.addEventListener("click", () => {
-
-      logos.forEach(l => l.classList.remove("active"));
-      logo.classList.add("active");
-
-      const filter = logo.dataset.filter;
-
-      rails.forEach(rail => {
-        if(rail.dataset.category === filter){
-          rail.style.display = "block";
-          rail.style.animation = "fadeInUp 0.4s ease";
-        } else {
-          rail.style.display = "none";
-        }
+        });
       });
 
-    });
-  });
+      /* =========================
+      LIGHTBOX SYSTEM
+      ========================= */
 
-  /* =========================
-     LIGHTBOX SYSTEM
-  ========================= */
+      const images = document.querySelectorAll(".rail-scroll img");
+      const lightbox = document.createElement("div");
+      lightbox.classList.add("lightbox");
 
-  const images = document.querySelectorAll(".rail-scroll img");
-  const lightbox = document.createElement("div");
-  lightbox.classList.add("lightbox");
+      const img = document.createElement("img");
+      lightbox.appendChild(img);
 
-  const img = document.createElement("img");
-  lightbox.appendChild(img);
+      document.body.appendChild(lightbox);
 
-  document.body.appendChild(lightbox);
+      let currentIndex = 0;
+      let imageArray = Array.from(images);
 
-  let currentIndex = 0;
-  let imageArray = Array.from(images);
+      function showImage(index){
+        if(index < 0) index = imageArray.length - 1;
+        if(index >= imageArray.length) index = 0;
 
-  function showImage(index){
-    if(index < 0) index = imageArray.length - 1;
-    if(index >= imageArray.length) index = 0;
-
-    currentIndex = index;
-    img.src = imageArray[currentIndex].src;
-  }
-
-  images.forEach((image, index) => {
-    image.addEventListener("click", () => {
-      lightbox.style.display = "flex";
-      showImage(index);
-    });
-  });
-
-  lightbox.addEventListener("click", () => {
-    lightbox.style.display = "none";
-  });
-
-  /* KEY NAVIGATION */
-  document.addEventListener("keydown", (e) => {
-    if(lightbox.style.display === "flex"){
-      if(e.key === "ArrowRight") showImage(currentIndex + 1);
-      if(e.key === "ArrowLeft") showImage(currentIndex - 1);
-      if(e.key === "Escape") lightbox.style.display = "none";
-    }
-  });
-
-  /* =========================
-     SUBTLE AUTO-SCROLL EFFECT
-  ========================= */
-
-  document.querySelectorAll(".rail-scroll").forEach(rail => {
-    let scrollSpeed = 0.5;
-
-    function autoScroll(){
-      rail.scrollLeft += scrollSpeed;
-
-      if(rail.scrollLeft >= rail.scrollWidth - rail.clientWidth){
-        rail.scrollLeft = 0;
+        currentIndex = index;
+        img.src = imageArray[currentIndex].src;
       }
 
-      requestAnimationFrame(autoScroll);
-    }
+      images.forEach((image, index) => {
+        image.addEventListener("click", () => {
+          lightbox.style.display = "flex";
+          showImage(index);
+        });
+      });
 
-    autoScroll();
-  });
+      lightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+      });
 
-});
-</script>
+      /* KEY NAVIGATION */
+      document.addEventListener("keydown", (e) => {
+        if(lightbox.style.display === "flex"){
+          if(e.key === "ArrowRight") showImage(currentIndex + 1);
+          if(e.key === "ArrowLeft") showImage(currentIndex - 1);
+          if(e.key === "Escape") lightbox.style.display = "none";
+        }
+      });
 
+      /* =========================
+      SUBTLE AUTO-SCROLL EFFECT
+      ========================= */
+
+      document.querySelectorAll(".rail-scroll").forEach(rail => {
+        let scrollSpeed = 0.5;
+
+        function autoScroll(){
+          rail.scrollLeft += scrollSpeed;
+
+          if(rail.scrollLeft >= rail.scrollWidth - rail.clientWidth){
+            rail.scrollLeft = 0;
+          }
+
+          requestAnimationFrame(autoScroll);
+        }
+
+        autoScroll();
+      });
+
+    });
+  </script>
+
+<script src="script.js"></script>
+</body>
+</html>
