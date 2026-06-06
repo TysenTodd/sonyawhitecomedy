@@ -584,28 +584,6 @@ document.querySelectorAll(".close-tour-scroll").forEach(btn => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("siteLockOverlay");
   const form = document.getElementById("siteLockForm");
