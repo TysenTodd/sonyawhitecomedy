@@ -443,7 +443,7 @@ function startShowcaseRotation() {
 
     activateFilter(currentIndex);
 
-  }, 7000);
+  }, 10000);
 }
 
 const showcaseObserver = new IntersectionObserver(
