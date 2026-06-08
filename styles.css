@@ -6089,7 +6089,7 @@ html {
   align-items: center;
 }
 
-/* REMOVE OLD GRID/CARD BEHAVIOR */
+/* PROMO STACK */
 .promotions-section .coming-soon-promo-section {
   width: 100% !important;
   max-width: none !important;
@@ -6097,8 +6097,10 @@ html {
   padding: 0 !important;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 24px;
 
   background: transparent !important;
   overflow: visible;
@@ -6109,13 +6111,42 @@ html {
   display: none !important;
 }
 
+/* BOOKING PILL */
+.booking-pill-card {
+  position: relative;
+  z-index: 5;
+
+  width: fit-content;
+  margin: 0 auto;
+  padding: 12px 30px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(135deg, rgba(242, 140, 40, 0.98), rgba(31, 122, 77, 0.98));
+  color: #fff;
+
+  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 12px 28px rgba(31, 122, 77, 0.28),
+    0 8px 20px rgba(242, 140, 40, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
 /* IMAGE CARD WITH STILL PURPLE BORDER */
 .promotions-section .coming-soon-promo-card {
   position: relative;
   z-index: 4;
   isolation: isolate;
 
-  width: min(1000px, 90vw);
+  width: min(820px, 86vw);
   aspect-ratio: 1127 / 1225;
 
   padding: 10px;
@@ -6242,8 +6273,18 @@ html {
       );
   }
 
+  .promotions-section .coming-soon-promo-section {
+    gap: 18px;
+  }
+
+  .booking-pill-card {
+    padding: 10px 22px;
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+  }
+
   .promotions-section .coming-soon-promo-card {
-    width: min(100%, 520px);
+    width: min(100%, 460px);
     padding: 7px;
     border-radius: 24px;
   }
@@ -6260,7 +6301,24 @@ html {
 
   .promotions-section .coming-soon-promo-card img {
     border-radius: 19px;
-  }}
+  }
+}
+
+/* =========================
+   THREE SET THEATER FLIP
+========================= */
+
+.three-set-flip-card.is-flipped .gallery-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.three-set-flip-card .gallery-flip-inner {
+  transition: transform 0.9s ease;
+}
+
+
+
+
 
 
 /* TOUR CARDS */

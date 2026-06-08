@@ -628,3 +628,126 @@ document.addEventListener("keydown", (e) => {
   closeVideoModal();
   document.body.style.overflow = "auto";
 });
+
+
+/* =========================
+   FOOTER BIO MODAL LINK
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const footerBioLink = document.querySelector(".footer-bio-modal-link");
+  const bioModal = document.getElementById("bioModal");
+
+  if (!footerBioLink || !bioModal) return;
+
+  footerBioLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    bioModal.classList.add("active");
+    bioModal.style.display = "";
+    document.body.style.overflow = "hidden";
+  });
+});
+
+/* =========================
+   THEATER THREE-SET FLIP GALLERY
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const theaterCards = document.querySelectorAll(".three-set-flip-card");
+
+  if (!theaterCards.length) return;
+
+  theaterCards.forEach((card) => {
+    const images = card.dataset.images.split("|");
+
+    const frontImg = card.querySelector(".front img");
+    const backImg = card.querySelector(".back img");
+
+    let currentIndex = 0;
+    let showingBack = false;
+
+    if (frontImg) frontImg.src = images[0];
+    if (backImg) backImg.src = images[1];
+
+    setInterval(() => {
+      const nextIndex = (currentIndex + 1) % images.length;
+
+      if (showingBack) {
+        if (frontImg) frontImg.src = images[nextIndex];
+        card.classList.remove("is-flipped");
+      } else {
+        if (backImg) backImg.src = images[nextIndex];
+        card.classList.add("is-flipped");
+      }
+
+      showingBack = !showingBack;
+      currentIndex = nextIndex;
+
+    }, 4500);
+  });
+});
+
+function openVideoModal(videoSrc) {
+  const videoModal = document.getElementById("videoModal");
+  const modalVideo = document.getElementById("modalVideo");
+
+  if (!videoModal || !modalVideo || !videoSrc) return;
+
+  const autoplayURL = videoSrc.includes("?")
+    ? `${videoSrc}&autoplay=1&playsinline=1&rel=0`
+    : `${videoSrc}?autoplay=1&playsinline=1&rel=0`;
+
+  modalVideo.src = autoplayURL;
+  videoModal.style.display = "flex";
+  videoModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeVideoModal() {
+  const videoModal = document.getElementById("videoModal");
+  const modalVideo = document.getElementById("modalVideo");
+
+  if (!videoModal || !modalVideo) return;
+
+  videoModal.classList.remove("active");
+  videoModal.style.display = "none";
+  modalVideo.src = "";
+  document.body.style.overflow = "auto";
+}
+
+document.querySelectorAll(".video-trigger, .sw-video-card").forEach(card => {
+  card.addEventListener("click", () => {
+    openVideoModal(card.dataset.video);
+  });
+});
+
+document.querySelectorAll(".close-modal").forEach(btn => {
+  btn.addEventListener("click", closeVideoModal);
+});
+
+window.addEventListener("click", e => {
+  const videoModal = document.getElementById("videoModal");
+
+  if (e.target === videoModal) {
+    closeVideoModal();
+  }
+});
+
+
+
+
+document.querySelectorAll(".jerry-click-video").forEach(videoBox => {
+  videoBox.addEventListener("click", () => {
+    const videoId = videoBox.dataset.videoId;
+
+    videoBox.innerHTML = `
+      <iframe
+        src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
+        title="Sonya White Jerry Springer Appearance"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    `;
+  });
+});
