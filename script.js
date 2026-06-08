@@ -1,753 +1,617 @@
-// HAMBURGER MENU
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+(() => {
+  "use strict";
 
-hamburger?.addEventListener('click', () => {
-  if (!navLinks) return;
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const supportsIO = "IntersectionObserver" in window;
 
-  const isOpen = navLinks.classList.toggle('active');
-  hamburger.classList.toggle('active', isOpen);
-  hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-});
+  const runReady = (callback) => {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", callback, { once: true });
+    } else {
+      callback();
+    }
+  };
 
-navLinks?.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    hamburger?.classList.remove('active');
-    hamburger?.setAttribute('aria-expanded', 'false');
-  });
-});
+  const setBodyScrollLocked = (locked) => {
+    document.body.style.overflow = locked ? "hidden" : "auto";
+  };
 
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 850) {
-    navLinks?.classList.remove('active');
-    hamburger?.classList.remove('active');
-    hamburger?.setAttribute('aria-expanded', 'false');
+  const addAutoplayParams = (url) => {
+    if (!url) return "";
+    const separator = url.includes("?") ? "&" : "?";
+    return `${url}${separator}autoplay=1&playsinline=1&rel=0`;
+  };
+
+  const hydrateIframe = (iframe) => {
+    if (!iframe || !iframe.dataset.src) return;
+    if (!iframe.src || iframe.src === "about:blank" || iframe.getAttribute("src") === "about:blank") {
+      iframe.src = iframe.dataset.src;
+    }
+  };
+
+  const hydrateMediaInside = (root) => {
+    if (!root) return;
+    $$('iframe[data-src]', root).forEach(hydrateIframe);
+  };
+
+  const unloadMediaInside = (root) => {
+    if (!root) return;
+    $$('iframe[data-src]', root).forEach((iframe) => {
+      iframe.src = "about:blank";
+    });
+  };
+
+  function openCustomModal(modal) {
+    if (!modal) return;
+    modal.classList.add("active");
+    modal.style.display = "";
+    setBodyScrollLocked(true);
+    hydrateMediaInside(modal);
   }
-});
 
+  function closeCustomModal(modal) {
+    if (!modal) return;
+    modal.classList.remove("active");
+    modal.style.display = "";
+    unloadMediaInside(modal);
+    if (!$$(".custom-modal.active").length && !$("#videoModal.active")) {
+      setBodyScrollLocked(false);
+    }
+  }
 
+  function openVideoModal(videoSrc) {
+    const videoModal = $("#videoModal");
+    const modalVideo = $("#modalVideo");
+    if (!videoModal || !modalVideo || !videoSrc) return;
 
+    modalVideo.src = addAutoplayParams(videoSrc);
+    videoModal.style.display = "flex";
+    videoModal.classList.add("active");
+    setBodyScrollLocked(true);
+  }
 
-// =========================
-// ELEMENTS
-// =========================
-const bubbles = document.querySelectorAll(".bubble");
-const cards = document.querySelectorAll(".video-card");
+  function closeVideoModal() {
+    const videoModal = $("#videoModal");
+    const modalVideo = $("#modalVideo");
+    if (!videoModal || !modalVideo) return;
 
-const modal = document.getElementById("videoModal");
-const modalVideo = document.getElementById("modalVideo");
-const triggers = document.querySelectorAll(".video-trigger");
-const closeBtn = document.querySelector(".close-modal");
+    videoModal.classList.remove("active");
+    videoModal.style.display = "none";
+    modalVideo.src = "about:blank";
+    if (!$$('.custom-modal.active').length) {
+      setBodyScrollLocked(false);
+    }
+  }
 
+  window.openVideoModal = openVideoModal;
+  window.closeVideoModal = closeVideoModal;
 
-// =========================
-// BUBBLE FILTER SYSTEM (NEW)
-// =========================
-bubbles.forEach(bubble => {
-  bubble.addEventListener("click", () => {
+  function setupNavbar() {
+    const hamburger = $(".hamburger");
+    const navLinks = $(".nav-links");
+    if (!hamburger || !navLinks) return;
 
-    // active state
-    bubbles.forEach(b => b.classList.remove("active"));
-    bubble.classList.add("active");
+    hamburger.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("active");
+      hamburger.classList.toggle("active", isOpen);
+      hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
 
-    const filter = bubble.dataset.filter;
+    navLinks.addEventListener("click", (event) => {
+      if (!event.target.closest("a")) return;
+      navLinks.classList.remove("active");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
 
-    cards.forEach(card => {
+    let resizeFrame = null;
+    window.addEventListener("resize", () => {
+      if (resizeFrame) return;
+      resizeFrame = requestAnimationFrame(() => {
+        resizeFrame = null;
+        if (window.innerWidth > 850) {
+          navLinks.classList.remove("active");
+          hamburger.classList.remove("active");
+          hamburger.setAttribute("aria-expanded", "false");
+        }
+      });
+    }, { passive: true });
+  }
 
-      const category = card.dataset.category;
+  function filterVideoCards(scope, filter) {
+    const cards = $$(".video-card", scope);
+    cards.forEach((card) => {
+      const visible = filter === "all" || card.dataset.category === filter;
+      card.style.display = visible ? "block" : "none";
+      card.style.opacity = visible ? "1" : "";
+      card.style.transform = visible ? "" : "";
+    });
+  }
 
-      if (filter === "all" || category === filter) {
+  function setupShowcaseRotation() {
+    const showcaseSection = $(".videos-showcase-pro");
+    const showcaseFilters = $$(".videos-pro-filters .bubble");
+    if (!showcaseSection || !showcaseFilters.length) return;
 
-        card.style.display = "block";
+    let currentIndex = 0;
+    let intervalId = null;
 
-        setTimeout(() => {
-          card.style.opacity = "1";
-          card.style.transform = "scale(1)";
-        }, 50);
+    const activate = (index) => {
+      const bubble = showcaseFilters[index];
+      if (!bubble) return;
+      showcaseFilters.forEach((item) => item.classList.remove("active"));
+      bubble.classList.add("active");
+      filterVideoCards(showcaseSection, bubble.dataset.filter);
+    };
 
-      } else {
-
-        card.style.opacity = "0";
-        card.style.transform = "scale(0.95)";
-
-        setTimeout(() => {
-          card.style.display = "none";
-        }, 200);
+    const stop = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
       }
+    };
+
+    const start = () => {
+      if (intervalId || document.hidden) return;
+      activate(currentIndex);
+      intervalId = setInterval(() => {
+        currentIndex = (currentIndex + 1) % showcaseFilters.length;
+        activate(currentIndex);
+      }, 10000);
+    };
+
+    showcaseSection.addEventListener("click", (event) => {
+      const bubble = event.target.closest(".videos-pro-filters .bubble");
+      if (!bubble) return;
+      currentIndex = showcaseFilters.indexOf(bubble);
+      stop();
+      activate(currentIndex);
     });
 
-  });
-});
+    if (supportsIO) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) start();
+          else stop();
+        });
+      }, { threshold: 0.35 });
+      observer.observe(showcaseSection);
+    } else {
+      start();
+    }
 
-
-
-
-// =========================
-// MODAL SYSTEM (FIXED)
-// =========================
-if (modal && modalVideo) {
-  triggers.forEach(el => {
-    el.addEventListener("click", () => {
-      const videoSrc = el.dataset.video;
-
-      modal.style.display = "flex";
-      modal.classList.add("active");
-      modalVideo.src = videoSrc.includes("?") ? `${videoSrc}&autoplay=1` : `${videoSrc}?autoplay=1`;
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
     });
-  });
-}
-
-function closeVideoModal() {
-  if (!modal || !modalVideo) return;
-  modal.classList.remove("active");
-  modal.style.display = "none";
-  modalVideo.src = "";
-}
-
-// close button
-closeBtn?.addEventListener("click", closeVideoModal);
-
-// click outside modal
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    closeVideoModal();
-  }
-});
-
-
-// HOME TOUR SCROLL ANIMATION
-const tourCards = document.querySelectorAll(".home-tour .tour-card");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, { threshold: 0.2 });
-
-tourCards.forEach(card => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(40px)";
-  card.style.transition = "0.6s ease";
-  observer.observe(card);
-});
-
-
-
-function openFooterModal(type) {
-  const modal = document.getElementById("footer-modal");
-  const text = document.getElementById("footer-modal-text");
-
-  modal.style.display = "flex";
-
-  if (type === "terms") {
-    text.innerHTML = `
-      <h2>Terms of Service</h2>
-      <p>All content and performances are property of Sonya White Comedy. No redistribution without permission.</p>
-    `;
   }
 
-  if (type === "privacy") {
-    text.innerHTML = `
-      <h2>Privacy Policy</h2>
-      <p>We only collect basic contact information submitted through forms. No data is sold or shared.</p>
-    `;
-  }
-}
+  function setupRevealAnimations() {
+    const tourCards = $$(".home-tour .tour-card");
+    if (tourCards.length) {
+      tourCards.forEach((card) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(40px)";
+        card.style.transition = "0.6s ease";
+      });
 
-function closeFooterModal() {
-  document.getElementById("footer-modal").style.display = "none";
-}
+      if (supportsIO) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.2 });
 
-/* =========================
-   ABOUT PAGE MODALS
-========================= */
-
-const modalTriggers = document.querySelectorAll(".modal-trigger");
-const modals = document.querySelectorAll(".custom-modal");
-const closeButtons = document.querySelectorAll(".close-modal");
-
-modalTriggers.forEach(trigger => {
-  trigger.addEventListener("click", () => {
-
-    const modalId = trigger.getAttribute("data-modal");
-    const modal = document.getElementById(modalId);
-
-    if(modal){
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
+        tourCards.forEach((card) => observer.observe(card));
+      } else {
+        tourCards.forEach((card) => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        });
+      }
     }
 
-  });
-});
+    const testimonials = $$(".testimonial-card");
+    if (!testimonials.length) return;
 
-closeButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const parentModal = button.closest(".custom-modal");
+    testimonials.forEach((card) => card.classList.add("reveal-ready"));
 
-    if (parentModal) {
-      parentModal.classList.remove("active");
-      parentModal.style.display = "";
-      document.body.style.overflow = "auto";
+    if (!supportsIO) {
+      testimonials.forEach((card) => card.classList.add("reveal-active"));
       return;
     }
 
-    if (button.closest("#videoModal")) {
-      closeVideoModal();
+    const testimonialObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("reveal-active");
+        testimonialObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+
+    testimonials.forEach((card) => testimonialObserver.observe(card));
+  }
+
+  function setupSectionFilters() {
+    document.addEventListener("click", (event) => {
+      const swBubble = event.target.closest(".sw-showcase-section .sw-bubble");
+      if (swBubble) {
+        const showcaseSection = swBubble.closest(".sw-showcase-section");
+        const filter = swBubble.dataset.filter;
+        $$(".sw-bubble", showcaseSection).forEach((btn) => btn.classList.remove("active"));
+        swBubble.classList.add("active");
+        $$(".sw-video-card", showcaseSection).forEach((card) => {
+          card.classList.toggle("hide", !(filter === "all" || card.dataset.category === filter));
+        });
+        return;
+      }
+
+      const tourFilter = event.target.closest(".tour-modal-filter");
+      if (tourFilter) {
+        const tourModal = tourFilter.closest(".tour-modal-mini");
+        const filter = tourFilter.dataset.filter;
+        $$(".tour-modal-filter", tourModal).forEach((btn) => btn.classList.remove("active"));
+        tourFilter.classList.add("active");
+        $$(".tour-modal-event-card", tourModal).forEach((card) => {
+          card.classList.toggle("hide", !(filter === "all" || card.dataset.type === filter));
+        });
+        return;
+      }
+
+      const galleryFilter = event.target.closest(".gallery-modal-upgraded .gallery-filter-card");
+      if (galleryFilter) {
+        const galleryModal = galleryFilter.closest(".gallery-modal-upgraded");
+        const selected = galleryFilter.dataset.filter;
+        $$(".gallery-filter-card", galleryModal).forEach((btn) => btn.classList.remove("active"));
+        galleryFilter.classList.add("active");
+        $$(".gallery-rail", galleryModal).forEach((rail) => {
+          const visible = rail.dataset.category === selected;
+          rail.style.display = visible ? "block" : "none";
+          rail.classList.toggle("active", visible);
+        });
+      }
+    });
+  }
+
+  const loadedScripts = new Set();
+  function loadScriptOnce(url, callback) {
+    if (!url) return;
+    if (loadedScripts.has(url)) {
+      if (typeof callback === "function") callback();
+      return;
     }
-  });
-});
+    loadedScripts.add(url);
+    const script = document.createElement("script");
+    script.src = url;
+    script.async = true;
+    if (typeof callback === "function") script.addEventListener("load", callback, { once: true });
+    document.body.appendChild(script);
+  }
 
-window.addEventListener("click", (e) => {
-
-  modals.forEach(modal => {
-
-    if(e.target === modal){
-      modal.classList.remove("active");
-      modal.style.display = "";
-      document.body.style.overflow = "auto";
-    }
-
-  });
-
-});
-
-
-const modalIds = [
-  "bioModal",
-  "tourModal",
-  "galleryModal",
-  "showcaseModal",
-  "cinemaModal"
-];
-
-modalIds.forEach(id => {
-  const modal = document.getElementById(id);
-
-  if (!modal) return;
-
-  const closeBtn = modal.querySelector(".hero-modal-close");
-
-  closeBtn?.addEventListener("click", () => {
-    modal.classList.remove("active");
-    modal.style.display = "";
-    document.body.style.overflow = "auto";
-  });
-});
-
-function setupBubbleFilters(container) {
-  const bubbles = container.querySelectorAll(".bubble");
-  const cards = container.querySelectorAll(".video-card");
-
-  bubbles.forEach(bubble => {
-    bubble.addEventListener("click", () => {
-
-      bubbles.forEach(b => b.classList.remove("active"));
-      bubble.classList.add("active");
-
-      const filter = bubble.dataset.filter;
-
-      cards.forEach(card => {
-
-        const category = card.dataset.category;
-
-        if (filter === "all" || category === filter) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
-        }
-
-      });
-
+  function loadFacebookEmbed() {
+    const holder = $('script[data-defer-social="facebook"]');
+    const url = holder?.dataset.src || "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0";
+    loadScriptOnce(url, () => {
+      if (window.FB?.XFBML?.parse) window.FB.XFBML.parse();
     });
-  });
-}
+  }
 
-const showcaseModal = document.getElementById("showcaseModal");
+  function loadTikTokEmbed() {
+    const holder = $('script[data-defer-social="tiktok"]');
+    const url = holder?.dataset.src || "https://www.tiktok.com/embed.js";
+    loadScriptOnce(url);
+  }
 
-if (showcaseModal) {
-  setupBubbleFilters(showcaseModal);
-}
+  function setupSocialTabs() {
+    const socialText = $("#socialFeedText");
+    const textMap = {
+      facebook: "See Sonya’s latest updates directly from Facebook.",
+      instagram: "View Sonya’s Instagram highlights and follow her latest comedy moments.",
+      tiktok: "Watch short-form clips, comedy moments, and featured TikTok content."
+    };
 
-/* =========================
-   SONYA SHOWCASE MINI FILTER + VIDEO
-========================= */
+    document.addEventListener("click", (event) => {
+      const tab = event.target.closest(".social-tab");
+      if (!tab) return;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const showcaseSection = document.querySelector(".sw-showcase-section");
-  if (!showcaseSection) return;
-
-  const showcaseBubbles = showcaseSection.querySelectorAll(".sw-bubble");
-  const showcaseCards = showcaseSection.querySelectorAll(".sw-video-card");
-
-  showcaseBubbles.forEach((bubble) => {
-    bubble.addEventListener("click", () => {
-      const filter = bubble.dataset.filter;
-
-      showcaseBubbles.forEach((btn) => btn.classList.remove("active"));
-      bubble.classList.add("active");
-
-      showcaseCards.forEach((card) => {
-        const category = card.dataset.category;
-
-        if (filter === "all" || category === filter) {
-          card.classList.remove("hide");
-        } else {
-          card.classList.add("hide");
-        }
-      });
-    });
-  });
-
-  const videoModal = document.getElementById("videoModal");
-  const modalVideo = document.getElementById("modalVideo");
-
-  showcaseCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      if (!videoModal || !modalVideo) return;
-
-      const videoURL = card.dataset.video;
-      modalVideo.src = videoURL;
-      videoModal.style.display = "flex";
-    });
-  });
-});
-
-/* =========================
-   TOUR MODAL FILTERS
-========================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const tourModal = document.querySelector(".tour-modal-mini");
-  if (!tourModal) return;
-
-  const filterButtons = tourModal.querySelectorAll(".tour-modal-filter");
-  const eventCards = tourModal.querySelectorAll(".tour-modal-event-card");
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const filter = button.dataset.filter;
-
-      filterButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      eventCards.forEach((card) => {
-        const type = card.dataset.type;
-
-        if (filter === "all" || type === filter) {
-          card.classList.remove("hide");
-        } else {
-          card.classList.add("hide");
-        }
-      });
-    });
-  });
-});
-
-/* =========================
-   GALLERY MODAL FILTERS
-========================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const galleryModal = document.querySelector(".gallery-modal-upgraded");
-  if (!galleryModal) return;
-
-  const filters = galleryModal.querySelectorAll(".gallery-filter-card");
-  const rails = galleryModal.querySelectorAll(".gallery-rail");
-
-  filters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-      const selected = filter.dataset.filter;
-
-      filters.forEach((btn) => btn.classList.remove("active"));
-      filter.classList.add("active");
-
-      rails.forEach((rail) => {
-        if (rail.dataset.category === selected) {
-          rail.style.display = "block";
-          rail.classList.add("active");
-        } else {
-          rail.style.display = "none";
-          rail.classList.remove("active");
-        }
-      });
-    });
-  });
-});
-
-/* =====================
-   SOCIAL FEED TABS
-===================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const socialTabs = document.querySelectorAll(".social-tab");
-  const socialPanels = document.querySelectorAll(".social-feed-panel");
-  const socialText = document.getElementById("socialFeedText");
-
-  const textMap = {
-    facebook: "See Sonya’s latest updates directly from Facebook.",
-    instagram: "View Sonya’s Instagram highlights and follow her latest comedy moments.",
-    tiktok: "Watch short-form clips, comedy moments, and featured TikTok content."
-  };
-
-  socialTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
       const selected = tab.dataset.social;
-
-      socialTabs.forEach((btn) => btn.classList.remove("active"));
+      $$(".social-tab").forEach((btn) => btn.classList.remove("active"));
       tab.classList.add("active");
+      $$(".social-feed-panel").forEach((panel) => panel.classList.remove("active"));
+      $(`#${selected}Panel`)?.classList.add("active");
+      if (socialText && textMap[selected]) socialText.textContent = textMap[selected];
 
-      socialPanels.forEach((panel) => {
-        panel.classList.remove("active");
-      });
-
-      document.getElementById(`${selected}Panel`).classList.add("active");
-
-      if (socialText) {
-        socialText.textContent = textMap[selected];
-      }
+      if (selected === "facebook") loadFacebookEmbed();
+      if (selected === "tiktok") loadTikTokEmbed();
     });
-  });
-});
 
-const showcaseSection = document.querySelector(".videos-showcase-pro");
-const showcaseFilters = document.querySelectorAll(
-  ".videos-pro-filters .bubble"
-);
-
-let showcaseRotationStarted = false;
-let showcaseRotationInterval;
-
-function startShowcaseRotation() {
-  if (showcaseRotationStarted) return;
-
-  showcaseRotationStarted = true;
-
-  let currentIndex = 0;
-
-  function activateFilter(index) {
-    showcaseFilters[index].click();
-  }
-
-  activateFilter(0);
-
-  showcaseRotationInterval = setInterval(() => {
-    currentIndex++;
-
-    if (currentIndex >= showcaseFilters.length) {
-      currentIndex = 0;
-    }
-
-    activateFilter(currentIndex);
-
-  }, 10000);
-}
-
-const showcaseObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-
-      if (entry.isIntersecting) {
-        startShowcaseRotation();
-      }
-
-    });
-  },
-  {
-    threshold: 0.4
-  }
-);
-
-if (showcaseSection) {
-  showcaseObserver.observe(showcaseSection);
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const testimonialCards = document.querySelectorAll(".testimonial-card");
-
-  testimonialCards.forEach(card => {
-    card.classList.add("reveal-ready");
-  });
-
-  const testimonialObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal-active");
-          testimonialObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  testimonialCards.forEach(card => testimonialObserver.observe(card));
-});
-
-//Script for modals to close when button (not X button) is clicked
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".close-and-scroll").forEach(btn => {
-    btn.addEventListener("click", function(e) {
-      e.preventDefault();
-
-      const modal = this.closest(".custom-modal");
-
-      if (modal) {
-        modal.classList.remove("active");
-        modal.style.display = "";
-      }
-
-      document.body.style.overflow = "auto";
-
-      const target = document.querySelector("#tour");
-
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+    const contactSection = $(".socials-feed-section");
+    if (contactSection && supportsIO) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          loadFacebookEmbed();
+          observer.unobserve(entry.target);
         });
-      }
-    });
-  });
-});
-
-document.querySelectorAll(".close-gallery-scroll").forEach(btn => {
-  btn.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    const galleryModal = document.getElementById("galleryModal");
-
-    if (galleryModal) {
-      galleryModal.classList.remove("active");
-      document.body.style.overflow = "auto";
+      }, { rootMargin: "400px 0px", threshold: 0.01 });
+      observer.observe(contactSection);
+    } else if (contactSection) {
+      loadFacebookEmbed();
     }
-
-    const galleryTarget = document.querySelector("#gallery");
-
-    if (galleryTarget) {
-      galleryTarget.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  });
-});
-
-document.querySelectorAll(".close-showcase-scroll").forEach(btn => {
-  btn.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    const modal = document.getElementById("showcaseModal");
-
-    if (modal) {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
-    }
-
-    const showcaseTarget = document.querySelector("#showcase");
-
-    if (showcaseTarget) {
-      showcaseTarget.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  });
-});
-
-document.querySelectorAll(".close-tour-scroll").forEach(btn => {
-  btn.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    const modal = document.getElementById("tourModal");
-    const contactForm = document.getElementById("contactForm");
-
-    if (modal) {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
-    }
-
-    if (contactForm) {
-      setTimeout(() => {
-        contactForm.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }, 250);
-    }
-  });
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("siteLockOverlay");
-  const form = document.getElementById("siteLockForm");
-  const input = document.getElementById("siteLockCode");
-  const error = document.getElementById("siteLockError");
-
-  const correctCode = "sonya2026";
-
-  if (localStorage.getItem("siteUnlocked") === "true") {
-    overlay.style.display = "none";
-    return;
   }
 
-  document.body.style.overflow = "hidden";
+  function setupModalAndClickDelegation() {
+    document.addEventListener("click", (event) => {
+      const modalTrigger = event.target.closest(".modal-trigger");
+      if (modalTrigger) {
+        const modal = document.getElementById(modalTrigger.getAttribute("data-modal"));
+        openCustomModal(modal);
+        return;
+      }
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+      const customClose = event.target.closest(".hero-modal-close");
+      if (customClose) {
+        closeCustomModal(customClose.closest(".custom-modal"));
+        return;
+      }
 
-    if (input.value.trim() === correctCode) {
-      localStorage.setItem("siteUnlocked", "true");
+      const videoCard = event.target.closest(".video-trigger, .sw-video-card");
+      if (videoCard && videoCard.dataset.video) {
+        event.preventDefault();
+        openVideoModal(videoCard.dataset.video);
+        return;
+      }
+
+      const videoClose = event.target.closest("#videoModal .close-modal");
+      if (videoClose) {
+        closeVideoModal();
+        return;
+      }
+
+      const openModal = $("#videoModal.active");
+      if (openModal && event.target === openModal) {
+        closeVideoModal();
+        return;
+      }
+
+      const clickedBackdrop = event.target.classList?.contains("custom-modal") ? event.target : null;
+      if (clickedBackdrop) {
+        closeCustomModal(clickedBackdrop);
+        return;
+      }
+
+      const jerryBox = event.target.closest(".jerry-click-video");
+      if (jerryBox) {
+        const videoId = jerryBox.dataset.videoId;
+        if (!videoId) return;
+        jerryBox.innerHTML = `
+          <iframe
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1"
+            title="Sonya White Jerry Springer Appearance"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        `;
+      }
+    });
+  }
+
+  function setupCloseAndScrollButtons() {
+    const closeAndScroll = (event, modalSelector, targetSelector, delay = 0) => {
+      event.preventDefault();
+      const modal = modalSelector ? $(modalSelector) : event.currentTarget.closest(".custom-modal");
+      if (modal) closeCustomModal(modal);
+      const target = $(targetSelector);
+      if (!target) return;
+      window.setTimeout(() => target.scrollIntoView({ behavior: "smooth", block: "start" }), delay);
+    };
+
+    $$(".close-and-scroll").forEach((btn) => {
+      btn.addEventListener("click", (event) => closeAndScroll(event, null, "#tour"));
+    });
+
+    $$(".close-gallery-scroll").forEach((btn) => {
+      btn.addEventListener("click", (event) => closeAndScroll(event, "#galleryModal", "#gallery"));
+    });
+
+    $$(".close-showcase-scroll").forEach((btn) => {
+      btn.addEventListener("click", (event) => closeAndScroll(event, "#showcaseModal", "#showcase"));
+    });
+
+    $$(".close-tour-scroll").forEach((btn) => {
+      btn.addEventListener("click", (event) => closeAndScroll(event, "#tourModal", "#contactForm", 250));
+    });
+  }
+
+  function setupSiteLock() {
+    const overlay = $("#siteLockOverlay");
+    const form = $("#siteLockForm");
+    const input = $("#siteLockCode");
+    const error = $("#siteLockError");
+    if (!overlay || !form || !input) return;
+
+    const correctCode = "sonya2026";
+
+    if (localStorage.getItem("siteUnlocked") === "true") {
       overlay.style.display = "none";
-      document.body.style.overflow = "auto";
-    } else {
-      error.textContent = "Incorrect code. Please try again.";
-      input.value = "";
-      input.focus();
+      return;
     }
-  });
-});
 
-/* =========================
-   MOBILE MODAL ESCAPE SUPPORT
-========================= */
-document.addEventListener("keydown", (e) => {
-  if (e.key !== "Escape") return;
+    setBodyScrollLocked(true);
 
-  document.querySelectorAll(".custom-modal.active").forEach(openModal => {
-    openModal.classList.remove("active");
-    openModal.style.display = "";
-  });
-
-  closeVideoModal();
-  document.body.style.overflow = "auto";
-});
-
-
-/* =========================
-   FOOTER BIO MODAL LINK
-========================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const footerBioLink = document.querySelector(".footer-bio-modal-link");
-  const bioModal = document.getElementById("bioModal");
-
-  if (!footerBioLink || !bioModal) return;
-
-  footerBioLink.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    bioModal.classList.add("active");
-    bioModal.style.display = "";
-    document.body.style.overflow = "hidden";
-  });
-});
-
-/* =========================
-   THEATER THREE-SET FLIP GALLERY
-========================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const theaterCards = document.querySelectorAll(".three-set-flip-card");
-
-  if (!theaterCards.length) return;
-
-  theaterCards.forEach((card) => {
-    const images = card.dataset.images.split("|");
-
-    const frontImg = card.querySelector(".front img");
-    const backImg = card.querySelector(".back img");
-
-    let currentIndex = 0;
-    let showingBack = false;
-
-    if (frontImg) frontImg.src = images[0];
-    if (backImg) backImg.src = images[1];
-
-    setInterval(() => {
-      const nextIndex = (currentIndex + 1) % images.length;
-
-      if (showingBack) {
-        if (frontImg) frontImg.src = images[nextIndex];
-        card.classList.remove("is-flipped");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (input.value.trim() === correctCode) {
+        localStorage.setItem("siteUnlocked", "true");
+        overlay.style.display = "none";
+        setBodyScrollLocked(false);
       } else {
-        if (backImg) backImg.src = images[nextIndex];
-        card.classList.add("is-flipped");
+        if (error) error.textContent = "Incorrect code. Please try again.";
+        input.value = "";
+        input.focus();
       }
-
-      showingBack = !showingBack;
-      currentIndex = nextIndex;
-
-    }, 4500);
-  });
-});
-
-function openVideoModal(videoSrc) {
-  const videoModal = document.getElementById("videoModal");
-  const modalVideo = document.getElementById("modalVideo");
-
-  if (!videoModal || !modalVideo || !videoSrc) return;
-
-  const autoplayURL = videoSrc.includes("?")
-    ? `${videoSrc}&autoplay=1&playsinline=1&rel=0`
-    : `${videoSrc}?autoplay=1&playsinline=1&rel=0`;
-
-  modalVideo.src = autoplayURL;
-  videoModal.style.display = "flex";
-  videoModal.classList.add("active");
-  document.body.style.overflow = "hidden";
-}
-
-function closeVideoModal() {
-  const videoModal = document.getElementById("videoModal");
-  const modalVideo = document.getElementById("modalVideo");
-
-  if (!videoModal || !modalVideo) return;
-
-  videoModal.classList.remove("active");
-  videoModal.style.display = "none";
-  modalVideo.src = "";
-  document.body.style.overflow = "auto";
-}
-
-document.querySelectorAll(".video-trigger, .sw-video-card").forEach(card => {
-  card.addEventListener("click", () => {
-    openVideoModal(card.dataset.video);
-  });
-});
-
-document.querySelectorAll(".close-modal").forEach(btn => {
-  btn.addEventListener("click", closeVideoModal);
-});
-
-window.addEventListener("click", e => {
-  const videoModal = document.getElementById("videoModal");
-
-  if (e.target === videoModal) {
-    closeVideoModal();
+    });
   }
-});
 
+  function setupFooterBioLink() {
+    const footerBioLink = $(".footer-bio-modal-link");
+    const bioModal = $("#bioModal");
+    if (!footerBioLink || !bioModal) return;
 
+    footerBioLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      openCustomModal(bioModal);
+    });
+  }
 
+  function setupTheaterFlipGallery() {
+    const cards = $$(".three-set-flip-card");
+    if (!cards.length) return;
 
-document.querySelectorAll(".jerry-click-video").forEach(videoBox => {
-  videoBox.addEventListener("click", () => {
-    const videoId = videoBox.dataset.videoId;
+    const intervals = new WeakMap();
 
-    videoBox.innerHTML = `
-      <iframe
-        src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0"
-        title="Sonya White Jerry Springer Appearance"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    `;
+    const prepareCard = (card) => {
+      if (card.dataset.flipPrepared === "true") return;
+      const images = (card.dataset.images || "").split("|").filter(Boolean);
+      if (!images.length) return;
+
+      const frontImg = $(".front img", card);
+      const backImg = $(".back img", card);
+      if (frontImg) frontImg.src = images[0];
+      if (backImg) backImg.src = images[1] || images[0];
+      card.dataset.currentIndex = "0";
+      card.dataset.showingBack = "false";
+      card.dataset.flipPrepared = "true";
+    };
+
+    const startCard = (card) => {
+      prepareCard(card);
+      if (intervals.has(card) || document.hidden) return;
+      const images = (card.dataset.images || "").split("|").filter(Boolean);
+      if (images.length < 2) return;
+      const frontImg = $(".front img", card);
+      const backImg = $(".back img", card);
+
+      const id = setInterval(() => {
+        let currentIndex = Number(card.dataset.currentIndex || 0);
+        let showingBack = card.dataset.showingBack === "true";
+        const nextIndex = (currentIndex + 1) % images.length;
+
+        if (showingBack) {
+          if (frontImg) frontImg.src = images[nextIndex];
+          card.classList.remove("is-flipped");
+        } else {
+          if (backImg) backImg.src = images[nextIndex];
+          card.classList.add("is-flipped");
+        }
+
+        card.dataset.showingBack = String(!showingBack);
+        card.dataset.currentIndex = String(nextIndex);
+      }, 4500);
+
+      intervals.set(card, id);
+    };
+
+    const stopCard = (card) => {
+      const id = intervals.get(card);
+      if (!id) return;
+      clearInterval(id);
+      intervals.delete(card);
+    };
+
+    cards.forEach(prepareCard);
+
+    if (supportsIO) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) startCard(entry.target);
+          else stopCard(entry.target);
+        });
+      }, { rootMargin: "150px 0px", threshold: 0.05 });
+      cards.forEach((card) => observer.observe(card));
+    } else {
+      cards.forEach(startCard);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      cards.forEach((card) => {
+        if (document.hidden) stopCard(card);
+      });
+    });
+  }
+
+  function setupKeyboardSupport() {
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      $$(".custom-modal.active").forEach(closeCustomModal);
+      closeVideoModal();
+      setBodyScrollLocked(false);
+    });
+  }
+
+  function setupFooterModalGlobals() {
+    window.openFooterModal = (type) => {
+      const modal = $("#footer-modal");
+      const text = $("#footer-modal-text");
+      if (!modal || !text) return;
+      modal.style.display = "flex";
+      if (type === "terms") {
+        text.innerHTML = `
+          <h2>Terms of Service</h2>
+          <p>All content and performances are property of Sonya White Comedy. No redistribution without permission.</p>
+        `;
+      }
+      if (type === "privacy") {
+        text.innerHTML = `
+          <h2>Privacy Policy</h2>
+          <p>We only collect basic contact information submitted through forms. No data is sold or shared.</p>
+        `;
+      }
+    };
+
+    window.closeFooterModal = () => {
+      const modal = $("#footer-modal");
+      if (modal) modal.style.display = "none";
+    };
+  }
+
+  function setupIdleIframeHydration() {
+    const standaloneIframes = $$('iframe[data-src]').filter((iframe) => !iframe.closest('.custom-modal'));
+    if (!standaloneIframes.length) return;
+
+    if (supportsIO) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          hydrateIframe(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: "250px 0px", threshold: 0.01 });
+      standaloneIframes.forEach((iframe) => observer.observe(iframe));
+    } else {
+      standaloneIframes.forEach(hydrateIframe);
+    }
+  }
+
+  runReady(() => {
+    setupFooterModalGlobals();
+    setupNavbar();
+    setupModalAndClickDelegation();
+    setupSectionFilters();
+    setupShowcaseRotation();
+    setupRevealAnimations();
+    setupSocialTabs();
+    setupCloseAndScrollButtons();
+    setupSiteLock();
+    setupFooterBioLink();
+    setupTheaterFlipGallery();
+    setupKeyboardSupport();
+    setupIdleIframeHydration();
   });
-});
+})();
