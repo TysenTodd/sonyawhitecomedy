@@ -546,6 +546,89 @@
     });
   }
 
+
+  function setupTvNineImageGallery() {
+    const cards = $$('#galleryModal .gallery-rail[data-category="tv"] .tv-nine-flip-card');
+    if (!cards.length) return;
+
+    const intervals = new WeakMap();
+
+    const getImages = (card) => (card.dataset.images || "").split("|").filter(Boolean);
+
+    const prepareCard = (card) => {
+      if (card.dataset.tvFlipPrepared === "true") return;
+      const images = getImages(card);
+      if (!images.length) return;
+
+      const frontImg = $(".front img", card);
+      const backImg = $(".back img", card);
+      if (frontImg) frontImg.src = images[0];
+      if (backImg) backImg.src = images[1] || images[0];
+      card.classList.remove("is-flipped");
+      card.dataset.currentIndex = "0";
+      card.dataset.showingBack = "false";
+      card.dataset.tvFlipPrepared = "true";
+    };
+
+    const advanceCard = (card) => {
+      const images = getImages(card);
+      if (images.length < 2) return;
+
+      const frontImg = $(".front img", card);
+      const backImg = $(".back img", card);
+      const currentIndex = Number(card.dataset.currentIndex || 0);
+      const showingBack = card.dataset.showingBack === "true";
+      const nextIndex = (currentIndex + 1) % images.length;
+
+      if (showingBack) {
+        if (frontImg) frontImg.src = images[nextIndex];
+        card.classList.remove("is-flipped");
+      } else {
+        if (backImg) backImg.src = images[nextIndex];
+        card.classList.add("is-flipped");
+      }
+
+      card.dataset.currentIndex = String(nextIndex);
+      card.dataset.showingBack = String(!showingBack);
+    };
+
+    const startCard = (card) => {
+      prepareCard(card);
+      if (intervals.has(card) || document.hidden) return;
+      const images = getImages(card);
+      if (images.length < 2) return;
+      intervals.set(card, setInterval(() => advanceCard(card), 4500));
+    };
+
+    const stopCard = (card) => {
+      const id = intervals.get(card);
+      if (!id) return;
+      clearInterval(id);
+      intervals.delete(card);
+    };
+
+    cards.forEach(prepareCard);
+
+    if (supportsIO) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) startCard(entry.target);
+          else stopCard(entry.target);
+        });
+      }, { rootMargin: "150px 0px", threshold: 0.05 });
+      cards.forEach((card) => observer.observe(card));
+    } else {
+      cards.forEach(startCard);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      cards.forEach((card) => {
+        if (document.hidden) stopCard(card);
+        else startCard(card);
+      });
+    });
+  }
+
   function setupKeyboardSupport() {
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
@@ -611,6 +694,7 @@
     setupSiteLock();
     setupFooterBioLink();
     setupTheaterFlipGallery();
+    setupTvNineImageGallery();
     setupKeyboardSupport();
     setupIdleIframeHydration();
   });
