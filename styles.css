@@ -13238,3 +13238,106 @@ iframe[src="about:blank"] {
     border-radius: 14px !important;
   }
 }
+
+/* ==================================================
+   MOBILE CONNECT SECTION EDGE FIX ONLY
+   Keeps the fix scoped to the Connect With Sonya area.
+================================================== */
+@media (max-width: 700px) {
+  #contact.socials-feed-section {
+    padding-left: clamp(12px, 4vw, 18px) !important;
+    padding-right: clamp(12px, 4vw, 18px) !important;
+    overflow-x: hidden !important;
+  }
+
+  #contact .social-feed-header,
+  #contact .social-feed-shell,
+  #contact .social-feed-panel,
+  #contact .social-feed-card,
+  #contact .contact-card,
+  #contact .social-card-body,
+  #contact #contactForm,
+  #contact .form-row,
+  #contact .form-group,
+  #contact .input-group,
+  #contact .instagram-profile-preview {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #contact .social-feed-shell {
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: stretch !important;
+    align-items: start !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+  }
+
+  #contact .social-feed-panel.active {
+    display: flex !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  #contact .social-feed-card,
+  #contact .contact-card {
+    justify-self: stretch !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: none !important;
+  }
+
+  #contact .social-card-body {
+    padding: 14px !important;
+    overflow: hidden !important;
+  }
+
+  #contact .fb-page,
+  #contact .fb-page > span,
+  #contact .fb-page iframe,
+  #contact .tiktok-embed,
+  #contact .tiktok-embed iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #contact .form-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  #contact .input-group input,
+  #contact .input-group textarea,
+  #contact #contactForm button {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #contact .radio-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  #contact .radio-option,
+  #contact .radio-option span {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  #contact .contact-card {
+    padding: 20px !important;
+    border-radius: 26px !important;
+  }
+
+  #contact .social-card-body {
+    padding: 10px !important;
+  }
+}
+
