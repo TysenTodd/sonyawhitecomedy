@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://sonyawhitecomedy.com/</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://sonyawhitecomedy.com/assets/images/heroimg2.jpg</image:loc>
+      <image:title>Sonya White Comedy</image:title>
+      <image:caption>Sonya White comedian, actor, and impressionist</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sonyawhitecomedy.com/assets/images/sonya-headshot.jpg</image:loc>
+      <image:title>Sonya White Headshot</image:title>
+      <image:caption>Sonya White clean comedian and performer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sonyawhitecomedy.com/assets/images/september-tour.png</image:loc>
+      <image:title>Sonya White September Tour 2026</image:title>
+      <image:caption>Sonya White 2026 comedy tour poster</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sonyawhitecomedy.com/assets/images/promoimg-2.jpg</image:loc>
+      <image:title>Sonya White Kentucky Comedy Festival</image:title>
+      <image:caption>Sonya White Kentucky Comedy Festival promotion</image:caption>
+    </image:image>
+  </url>
+</urlset>
