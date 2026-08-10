@@ -237,6 +237,53 @@
               }
             }
           }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Event",
+            "name": "Holiday Party",
+            "startDate": "2026-12-10",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "performer": {
+              "@id": "https://sonyawhitecomedy.com/#person"
+            },
+            "location": {
+              "@type": "Place",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Odessa",
+                "addressRegion": "TX",
+                "addressCountry": "US"
+              }
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Event",
+            "name": "Comedy Show Taping",
+            "startDate": "2026-12-15",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "performer": {
+              "@id": "https://sonyawhitecomedy.com/#person"
+            },
+            "location": {
+              "@type": "Place",
+              "name": "McCurdy’s Comedy Theatre",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Sarasota",
+                "addressRegion": "FL",
+                "addressCountry": "US"
+              }
+            }
+          }
         }
       ]
     }
@@ -246,7 +293,17 @@
 <!-- PASSED EVENT: June 27, 2026 Puppy Party Fundraiser removed from active Event structured data. -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://cdnjs.cloudflare.com" rel="preconnect"/><link href="https://www.youtube.com" rel="preconnect"/><link href="https://www.youtube-nocookie.com" rel="preconnect"/><link href="https://img.youtube.com" rel="preconnect"/><link href="https://connect.facebook.net" rel="preconnect"/><link href="https://www.tiktok.com" rel="preconnect"/>
 <!-- Styles -->
-<link href="styles.css" rel="stylesheet"/>
+<link href="styles.css?v=20260810-oct3-larger" rel="stylesheet"/>
+<style id="oct3-critical-layout">
+/* Critical October 3 fallback: keeps the poster correctly sized and warm even if an old styles.css is cached. */
+.oct3-showcase{position:relative!important;width:100%!important;overflow:hidden!important;isolation:isolate!important;padding:clamp(72px,7vw,112px) 5vw!important;background:radial-gradient(circle at 16% 14%,rgba(244,236,217,.92) 0%,rgba(244,236,217,.4) 20%,transparent 38%),radial-gradient(circle at 84% 16%,rgba(241,190,127,.74) 0%,rgba(192,144,97,.3) 25%,transparent 44%),linear-gradient(135deg,#8d6540 0%,#c09261 23%,#e4d7be 50%,#c99a66 76%,#765238 100%)!important}
+.oct3-showcase-stage{position:relative!important;z-index:5!important;width:min(1200px,100%)!important;margin:0 auto!important;display:flex!important;justify-content:center!important;align-items:center!important}
+.oct3-poster-shell{position:relative!important;width:min(460px,88vw)!important;max-width:460px!important;padding:10px!important;border-radius:30px!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:14px!important;background:linear-gradient(135deg,#f4ecd9 0%,#f1be7f 48%,#c09061 100%)!important;box-shadow:0 38px 90px rgba(54,35,22,.34)!important}
+.oct3-poster-image{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;object-fit:contain!important;border-radius:22px!important}
+.oct3-ticket-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;width:min(100%,300px)!important;margin:0 auto 2px!important;padding:14px 28px!important;border-radius:999px!important;background:linear-gradient(135deg,#f1be7f 0%,#efa739 48%,#d9821e 100%)!important;color:#17100b!important;text-decoration:none!important;font-weight:950!important;letter-spacing:1px!important;text-transform:uppercase!important;border:2px solid rgba(255,248,234,.88)!important}
+@media(max-width:800px){.oct3-poster-shell{width:min(420px,90vw)!important;max-width:420px!important}}
+@media(max-width:520px){.oct3-showcase{padding:52px 12px!important}.oct3-poster-shell{width:min(360px,94vw)!important;max-width:360px!important}}
+</style>
 <!-- FontAwesome CDN -->
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-...replace-with-correct-integrity..." referrerpolicy="no-referrer" rel="stylesheet"/>
 </head>
@@ -444,6 +501,43 @@
               </button>
 </div>
 <div class="tour-modal-card-grid">
+<!-- DEC 15 -->
+<div class="tour-modal-event-card upcoming" data-type="upcoming">
+<div class="tour-modal-date upcoming">
+<span>DEC</span>
+<strong>15</strong>
+</div>
+<div class="tour-modal-event-info">
+<div class="tour-modal-status-row">
+<span class="tour-modal-status-pill upcoming">Upcoming</span>
+<span class="tour-modal-type">Comedy Taping</span>
+</div>
+<h3>Comedy Show Taping</h3>
+<p class="tour-modal-venue">McCurdy’s Comedy Theatre</p>
+<p class="tour-modal-location">
+<i class="fa-solid fa-location-dot"></i>
+        Sarasota, FL
+      </p>
+</div>
+</div>
+<!-- DEC 10 -->
+<div class="tour-modal-event-card upcoming" data-type="upcoming">
+<div class="tour-modal-date upcoming">
+<span>DEC</span>
+<strong>10</strong>
+</div>
+<div class="tour-modal-event-info">
+<div class="tour-modal-status-row">
+<span class="tour-modal-status-pill upcoming">Upcoming</span>
+<span class="tour-modal-type">Holiday Event</span>
+</div>
+<h3>Holiday Party</h3>
+<p class="tour-modal-location">
+<i class="fa-solid fa-location-dot"></i>
+        Odessa, TX
+      </p>
+</div>
+</div>
 <!-- OCT 16 -->
 <div class="tour-modal-event-card upcoming" data-type="upcoming">
 <div class="tour-modal-date upcoming">
@@ -481,7 +575,7 @@
         Kenmore, NY · 7:00 PM
       </p>
 <a class="ticket-btn" href="https://www.robsplayhousetheater.com/shows/378917" rel="noopener noreferrer" target="_blank">
-        Get Tickets
+        Buy Tickets
       </a>
 </div>
 </div>
@@ -1761,6 +1855,35 @@ END PASSED EVENT -->
 </div>
 </div>
 </section>
+<!-- OCTOBER 3 COMEDY SHOW PROMO -->
+<!-- Warm poster showcase: mirrors the Kentucky promo layout without inheriting its purple/blue colors. -->
+<section class="oct3-showcase" aria-label="October 3 Sonya White comedy show">
+  <div class="oct3-showcase-light oct3-light-one" aria-hidden="true"></div>
+  <div class="oct3-showcase-light oct3-light-two" aria-hidden="true"></div>
+  <div class="oct3-showcase-light oct3-light-three" aria-hidden="true"></div>
+  <div class="oct3-showcase-grid" aria-hidden="true"></div>
+  <div class="oct3-showcase-stage">
+    <div class="oct3-poster-shell">
+      <img
+        class="oct3-poster-image"
+        alt="Comedy of Sonya White at Elmwood Commons Theater — October 3, 2026"
+        decoding="async"
+        loading="lazy"
+        src="assets/images/october3-event.jpg"
+      />
+      <a
+        class="oct3-ticket-button"
+        href="https://www.robsplayhousetheater.com/shows/378917"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i class="fa-solid fa-ticket" aria-hidden="true"></i>
+        Buy Tickets
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- KENTUCKY COMEDY FESTIVAL PROMO -->
 <section class="kentucky-comedy-section">
 <div class="kentucky-comedy-light light-one"></div>
@@ -1872,7 +1995,7 @@ END PASSED EVENT -->
         </p>
 </div>
 <a class="ticket-btn" href="https://www.robsplayhousetheater.com/shows/378917" rel="noopener noreferrer" target="_blank">
-        Get Tickets
+        Buy Tickets
       </a>
 </div>
 <!-- October 16 -->
@@ -1890,6 +2013,42 @@ END PASSED EVENT -->
 <p>
 <i class="fa-solid fa-location-dot"></i>
           Murray, KY
+        </p>
+</div>
+</div>
+<!-- DECEMBER 10 -->
+<div class="tour-card" data-date="2026-12-10" data-type="upcoming">
+<div class="tour-date upcoming">
+<span>DEC</span>
+<strong>10</strong>
+</div>
+<div class="tour-info">
+<div class="tour-status-row">
+<span class="status-badge upcoming-badge">Upcoming</span>
+<span class="tour-type">Holiday Event</span>
+</div>
+<h3>Holiday Party</h3>
+<p>
+<i class="fa-solid fa-location-dot"></i>
+          Odessa, TX
+        </p>
+</div>
+</div>
+<!-- DECEMBER 15 -->
+<div class="tour-card" data-date="2026-12-15" data-type="upcoming">
+<div class="tour-date upcoming">
+<span>DEC</span>
+<strong>15</strong>
+</div>
+<div class="tour-info">
+<div class="tour-status-row">
+<span class="status-badge upcoming-badge">Upcoming</span>
+<span class="tour-type">Comedy Taping</span>
+</div>
+<h3>Comedy Show Taping</h3>
+<p>
+<i class="fa-solid fa-location-dot"></i>
+          McCurdy’s Comedy Theatre · Sarasota, FL
         </p>
 </div>
 </div>

@@ -13341,3 +13341,177 @@ iframe[src="about:blank"] {
   }
 }
 
+/* =========================
+   OCTOBER 3 COMEDY SHOW PROMO
+   Larger desktop poster + responsive sizing
+========================= */
+
+.oct3-showcase {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+
+  padding: clamp(65px, 6vw, 95px) 5vw;
+
+  background:
+    radial-gradient(
+      circle at 16% 14%,
+      rgba(244, 236, 217, 0.92) 0%,
+      rgba(244, 236, 217, 0.40) 20%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 84% 16%,
+      rgba(241, 190, 127, 0.74) 0%,
+      rgba(192, 144, 97, 0.30) 25%,
+      transparent 44%
+    ),
+    linear-gradient(
+      135deg,
+      #8d6540 0%,
+      #c09261 23%,
+      #e4d7be 50%,
+      #c99a66 76%,
+      #765238 100%
+    );
+}
+
+
+/* CENTER POSTER */
+.oct3-showcase-stage {
+  position: relative;
+  z-index: 5;
+
+  width: min(1300px, 100%);
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* POSTER CONTAINER */
+/* Higher specificity + !important makes this override
+   the old October 3 fallback CSS in index.html */
+body .oct3-showcase .oct3-poster-shell {
+  position: relative;
+
+  width: min(620px, 88vw) !important;
+  max-width: 620px !important;
+
+  padding: 12px !important;
+  border-radius: 30px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+
+  gap: 14px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4ecd9 0%,
+      #f1be7f 48%,
+      #c09061 100%
+    ) !important;
+
+  box-shadow:
+    0 38px 90px rgba(54, 35, 22, 0.34) !important;
+}
+
+
+/* EVENT IMAGE */
+body .oct3-showcase .oct3-poster-image {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  height: auto !important;
+
+  object-fit: contain !important;
+
+  border-radius: 22px !important;
+}
+
+
+/* BUY TICKETS BUTTON */
+body .oct3-showcase .oct3-ticket-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 9px !important;
+
+  width: min(100%, 340px) !important;
+
+  margin: 0 auto 2px !important;
+
+  padding: 15px 30px !important;
+
+  border-radius: 999px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1be7f 0%,
+      #efa739 48%,
+      #d9821e 100%
+    ) !important;
+
+  color: #17100b !important;
+
+  text-decoration: none !important;
+
+  font-weight: 950 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+
+  border:
+    2px solid rgba(255, 248, 234, 0.88) !important;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+  body .oct3-showcase .oct3-poster-shell {
+    width: min(520px, 90vw) !important;
+    max-width: 520px !important;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+  .oct3-showcase {
+    padding: 48px 12px;
+  }
+
+  body .oct3-showcase .oct3-poster-shell {
+    width: min(390px, 94vw) !important;
+    max-width: 390px !important;
+
+    padding: 9px !important;
+  }
+
+  body .oct3-showcase .oct3-ticket-button {
+    width: 100% !important;
+
+    padding: 13px 22px !important;
+
+    font-size: 0.8rem !important;
+  }
+
+}
